@@ -7,6 +7,21 @@
   <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <base target="_blank">
   <script type="text/javascript">
+	  function Time() {
+	      var date = new Date();
+	      year = date.getFullYear();
+	      month = date.getMonth() + 1;
+	      day = date.getDate();
+	      hours = date.getHours();
+	      minutes = date.getMinutes();
+	      seconds = date.getSeconds();
+	      if (minutes < 10) {
+	          minutes = "0" + minutes;
+	      }
+	      titleText.innerText = hours + ":" + minutes;
+	      currentTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes;
+	  };setInterval("Time()", 1000);
+	  
   			if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
   				alert("禁止访问！");
   			window.location.href ="https://jkgblog.com";
@@ -67,23 +82,25 @@
           /*搜索框1*/
           .bar1 {
               /*background: #A3D0C3;*/
+			  text-align: center;
               position: absolute;
               top: 30%;
               left: 50%;
               transform: translate(-50%,-50%);
           }
           .bar1 input {
-              border: 2px solid #7BA7AB;
-              border-radius: 5px;
-              /*background: #F9F0DA;*/
-              background: #00000010;
+              border: 2px solid #ffaa00;
+              border-radius: 20px;
+              background: #fff0f7;
+              /* background: #00000010; */
               color: #9E9C9C;
           }
           .bar1 button {
               top: 0;
               right: 0;
-              background: #7BA7AB;
-              border-radius: 0 5px 5px 0;
+              background: #ffaa00;
+              /* border-radius: 0 5px 5px 0; */
+			 border-radius: 20px;
           }
           .bar1 button:before {
               content: "\f002";
@@ -91,10 +108,17 @@
               font-size: 16px;
               color: #F9F0DA;
           }
+		  	h2{
+		  		background: linear-gradient(to right, red, blue);
+		  		-webkit-background-clip: text;
+		  		color: transparent;
+				font-size: 2.0rem;
+		  	}
       </style>
   </head>
   <body>
       <div class="search bar1">
+		  <h2 id="titleText" onmouseover="timer()" onmouseout="timer()"></h2>
           <section>
               <input id="txtURL" type="text" placeholder="eg:www.example.com" autofocus="">
               <button id="btnGo" type="submit"></button>
