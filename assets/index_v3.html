@@ -4,7 +4,8 @@
   <title>BoxA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-  <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <base target="_blank">
   <script type="text/javascript">
 	  function Time() {
@@ -40,7 +41,6 @@
           body {
               margin: 0;
               padding: 0;
-              /*background: url(https://images.unsplash.com/photo-1569749452393-18e7d6158909?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80) no-repeat center center fixed;*/
               background: url(https://api.btstu.cn/sjbz/?lx=m_dongman) no-repeat center center fixed;
               background-size: cover;
               -moz-background-size: cover;
@@ -108,29 +108,40 @@
               font-size: 16px;
               color: #F9F0DA;
           }
-	  h2{
-	     background: linear-gradient(to right, red, blue);
-	     -webkit-background-clip: text;
-	     color: transparent;
-	     font-size: 2.0rem;
-	}
-	 .version{
-	position: absolute;
-	bottom: 0;
-	float: left;
-		 background-color: white;
-	}
-	.version a{
-	text-decoration: none;
-	color: #ff0000;
-	font-size: 0.7rem;
-	}
-	.version span{
-	font-size: 0.5rem;
-	}
+		  	h2{
+		  		background: linear-gradient(to right, red, blue);
+		  		-webkit-background-clip: text;
+		  		color: transparent;
+				font-size: 2.0rem;
+		  	}
+			.version{
+				position: absolute;
+				bottom: 15px;
+				float: left;
+				background-color: white;
+			}
+			.version span{
+				width: 5px;
+			}
+			.app{
+				width: 150px;
+				height: 150px;
+				display: none;
+			}
+			img{
+				width: 150px;
+				height: 150px;
+				object-fit: cover;
+			}
+			.text_{
+				display: none;
+				margin-left: 20px;
+				font-family: "arial narrow";
+			}
       </style>
   </head>
   <body>
+	  <!-- 主要代码 -->
       <div class="search bar1">
 		  <h2 id="titleText" onmouseover="timer()" onmouseout="timer()"></h2>
           <section>
@@ -138,6 +149,26 @@
               <button id="btnGo" type="submit"></button>
           </section>
       </div>
+	  <!-- 扫码下载代码 -->
+	  <div class="version">
+		  <div class="app">
+		  	<img src="https://tk.jkgblog.com/images/2020/07/21/boxa.png">
+		  </div>
+		  <span id="download"><i class="fa fa-chevron-right"></i><span class="text_">--下载最新版本--</span></span>
+	  </div>
+	  <!-- 扫码下载jQuery -->
+	  <script type="text/javascript">
+	  	$(function(){
+		 $("#download").click(function(){
+			 $('.app,.text_').fadeIn(2000)
+			 $('i').hide(1500)
+		 })
+		 $('.app').click(function(){
+			 $('.app,.text_').fadeOut(1500)
+			 $('i').show(1500)
+		 })
+		})
+	  </script>
   <script>
     const PAGE_CONF_SET = 110
     const PAGE_CONF_GET = 111
