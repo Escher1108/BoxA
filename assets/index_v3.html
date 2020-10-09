@@ -8,7 +8,6 @@
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <base target="_blank">
   <script type="text/javascript">
     function Time() {
@@ -27,6 +26,33 @@
       currentTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes;
     };
     setInterval("Time()", 1000);
+
+    //总函数
+    const TOTAL = () => {
+      const WARN = document.querySelector('.warning')
+      const WARNBOX = document.querySelector('.warning-box')
+      const CONTAINER = document.querySelector('.container')
+      WARN.classList.add("shower")
+      CONTAINER.style.display = 'none'
+      document.querySelector('#closedw').onclick = function () {
+        document.querySelector('.warning').classList.remove("shower")
+        document.querySelector('.container').style.display = 'block'
+      }
+    }
+    //禁止右击
+    document.oncontextmenu = function () {
+      TOTAL()
+      return false;
+    }
+
+    //禁止键盘事件
+    document.onkeydown = function (e) {
+      if (e.keyCode === 123 || e.ctrlKey) {
+        TOTAL()
+        return false
+      }
+    }
+
 
   			// if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
   			// 	alert("禁止访问！");
@@ -306,35 +332,6 @@
 		  
 		  <span id="download"><i class="fa fa-chevron-right"></i><span class="text_">--下载最新版本--</span></span>
 	  </div> -->
-  <!-- 警告显示隐藏 -->
-  <script>
-    //监听右击事件
-    $(function () {
-      $(".container").bind("contextmenu", function () {
-        $('.warning').toggleClass('shower')
-        $('.container').css("display", "none")
-        return false;
-      });
-      $(".warning").bind("contextmenu", function () {
-        $('.warning').toggleClass('shower')
-        $('.container').css("display", "block")
-        return false;
-      });
-      //关闭
-      $('#closedw').on('click', function () {
-        $('.warning').removeClass('shower')
-        $('.container').css("display", "block")
-      });
-
-      //监听键盘事件
-      $(document).keydown(function (event) {
-        //区分好ctrlKey 和 keyCode = 17,它们等价
-        if (event.ctrlKey || event.keyCode === 123) {
-          return false;
-        }
-      })
-    })
-  </script>
   <!-- 扫码下载jQuery -->
   <!--  <script type="text/javascript">
 	  	$(function(){
