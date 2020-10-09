@@ -310,29 +310,31 @@
   <!-- 警告显示隐藏 -->
   <script>
     //监听右击事件
-    $(".container").bind("contextmenu", function () {
-      $('.warning').toggleClass('shower')
-      $('.container').css("display", "none")
-      return false;
-    });
-    $(".warning").bind("contextmenu", function () {
-      $('.warning').toggleClass('shower')
-      $('.container').css("display", "block")
-      return false;
-    });
-    //关闭
-    $('#closedw').on('click', function () {
-      $('.warning').removeClass('shower')
-      $('.container').css("display", "block")
-    });
-
-    //监听键盘事件
-    $(document).keydown(function (event) {
-      //区分好ctrlKey 和 keyCode = 17,它们等价
-      if (event.ctrlKey || event.keyCode === 123) {
-        alert('STOP,停止你的小动作！')
+    $(function () {
+      $(".container").bind("contextmenu", function () {
+        $('.warning').toggleClass('shower')
+        $('.container').css("display", "none")
         return false;
-      }
+      });
+      $(".warning").bind("contextmenu", function () {
+        $('.warning').toggleClass('shower')
+        $('.container').css("display", "block")
+        return false;
+      });
+      //关闭
+      $('#closedw').on('click', function () {
+        $('.warning').removeClass('shower')
+        $('.container').css("display", "block")
+      });
+
+      //监听键盘事件
+      $(document).keydown(function (event) {
+        //区分好ctrlKey 和 keyCode = 17,它们等价
+        if (event.ctrlKey || event.keyCode === 123) {
+          alert('STOP,停止你的小动作！')
+          return false;
+        }
+      })
     })
   </script>
   <!-- 扫码下载jQuery -->
