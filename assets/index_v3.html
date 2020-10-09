@@ -10,6 +10,26 @@
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <base target="_blank">
   <script type="text/javascript">
+
+    const REDIRECT = () => {
+      var checkStatus;
+      var element = new Image();
+      // var element = document.createElement('any');
+      element.__defineGetter__('id', function () {
+        checkStatus = 'on';
+      });
+      setInterval(function () {
+        checkStatus = 'off';
+        console.log(element);
+        console.clear();
+        if (checkStatus == 'on') {
+          // alert('你在玩火，再见！')
+          // window.location.href = 'https://jkgblog.com'
+        }
+      }, 1000)
+    }
+    REDIRECT()
+
     function Time() {
       let titleText = document.querySelector('#titleText')
       var date = new Date();
@@ -53,36 +73,27 @@
       }
     }
 
-    const REDIRECT = () => {
-      var checkStatus;
-      var element = new Image();
-      // var element = document.createElement('any');
-      element.__defineGetter__('id', function () {
-        checkStatus = 'on';
-      });
-      setInterval(function () {
-        checkStatus = 'off';
-        console.log(element);
-        console.clear();
-        if (checkStatus == 'on') {
-          // alert('你在玩火，再见！')
-          window.location.href = 'https://jkgblog.com'
 
-        }
-      }, 1000)
+    const CHECK = () => {
+      var minimalUserResponseInMiliseconds = 100;
+      var before = new Date().getTime();
+      // debugger;
+      var after = new Date().getTime();
+      if (after - before > minimalUserResponseInMiliseconds) { // user had to resume the script manually via opened dev tools 
+
+      }
     }
-    REDIRECT()
-
+    CHECK()
 /*  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-        alert("禁止访问！");
-        window.location.href ="https://jkgblog.com";
-      } else if (/(Android)/i.test(navigator.userAgent)) {
-      // window.location.href ="https://jkgblog.com";
-    } else {
-      alert("禁止访问！");
-      window.location.href ="https://jkgblog.com";
-    };
-    */
+                    alert("禁止访问！");
+                    window.location.href ="https://jkgblog.com";
+                  } else if (/(Android)/i.test(navigator.userAgent)) {
+                  // window.location.href ="https://jkgblog.com";
+                } else {
+                  alert("禁止访问！");
+                  window.location.href ="https://jkgblog.com";
+                };
+                */
   </script>
   <style>
     * {
@@ -251,11 +262,14 @@
       width: 100%;
       line-height: 50px;
       font-size: 1.2rem;
+      display: flex;
+      justify-content: space-around;
+      background: #f5e4ec;
     }
 
     .footer-copyright a {
       text-decoration: none;
-      color: #000000;
+      color: #0f0b01;
     }
 
     /* 弹窗 */
@@ -329,6 +343,7 @@
       <section>
         <input id="txtURL" type="text" placeholder="Search" autofocus="">
         <button id="btnGo" type="submit"></button>
+        
       </section>
     </div>
   </div>
@@ -342,7 +357,8 @@
   </div>
   <!-- copyright -->
   <div class="footer-copyright">
-    ©2019-2020 | <a href="https://jkgblog.com" target="_blank">https://jkgblog.com</a>
+    <div>©2019-2020 | <a href="https://jkgblog.com" target="_blank">https://jkgblog.com</a></div>
+    <div>特别赞助：<a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer"> 蜜蜂云免费CDN</a></div>
   </div>
   <!-- 扫码下载代码 -->
   <!-- <div class="version">
