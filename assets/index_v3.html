@@ -18,7 +18,8 @@
       element.__defineGetter__('id', function () {
         checkStatus = 'on';
       });
-      setInterval(function () {
+      
+       setInterval(function(){
         checkStatus = 'off';
         console.log(element);
         console.clear();
@@ -66,23 +67,14 @@
 
     //禁止键盘事件
     document.onkeydown = function (e) {
-      if (e.keyCode === 123 || e.ctrlKey && e.shiftKey) {
+      if (e.keyCode === 123 || e.ctrlKey) {
+        TOTAL()
+        return false
+      }else if(e.shiftKey){
         TOTAL()
         return false
       }
     }
-
-
-    const CHECK = () => {
-      var minimalUserResponseInMiliseconds = 100;
-      var before = new Date().getTime();
-      // debugger;
-      var after = new Date().getTime();
-      if (after - before > minimalUserResponseInMiliseconds) { // user had to resume the script manually via opened dev tools 
-
-      }
-    }
-    CHECK()
 /*  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
                     alert("禁止访问！");
                     window.location.href ="https://jkgblog.com";
@@ -106,7 +98,7 @@
       height: auto;
       width: 100%;
       overflow: hidden;
-      font-family: "Microsoft YaHei", "宋体", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+      font-family:monospace;
     }
 
     @keyframes animate {
@@ -129,13 +121,17 @@
       left: 0;
       position: absolute;
       width: 100%;
+      /* 
+      
+      https://uploadbeta.com/api/pictures/random
+       */
       height: 100vh;
-      background: url(https://uploadbeta.com/api/pictures/random) no-repeat center center fixed;
+      background: url(https://api.btstu.cn/sjbz/?lx=dongman) no-repeat center center fixed;
       background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       -webkit-background-size: cover;
-      filter: blur(3px);
+      filter: blur(2px);
       z-index: -1;
     }
 
@@ -263,14 +259,18 @@
       font-size: 1.2rem;
       display: flex;
       justify-content: space-around;
-      background: #f5e4ec;
+      background: rgba(255, 255, 255, 0.5);
     }
 
     .footer-copyright a {
       text-decoration: none;
       color: #0f0b01;
+      font-size: 0.9rem;
     }
-
+    
+    .footer-copyright a:hover{
+      color:#37bcce;
+    }
     /* 弹窗 */
     .warning {
       width: 100%;
@@ -314,6 +314,7 @@
       transition: 1.5s;
     }
 
+
     /* 手机模式 */
     @media screen and (max-width:765px) {
       body {
@@ -328,7 +329,21 @@
         width: 100%;
         overflow: hidden;
         animation: animate 10s infinite linear;
-        font-family: "Microsoft YaHei", "宋体", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+        font-family: serif;
+      }
+      .right-cp{
+        display: none;
+      }
+
+      .footer-copyright{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    @media screen and (max-width:350px){
+      .footer-copyright{
+        display: none;
       }
     }
   </style>
@@ -356,8 +371,12 @@
   </div>
   <!-- copyright -->
   <div class="footer-copyright">
-    <div>©2019-2020 | <a href="https://jkgblog.com" target="_blank" title="站长博客">https://jkgblog.com</a></div>
-    <div>特别赞助：<a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN"> 蜜蜂云免费CDN</a></div>
+    <div><b>Copyright：</b><span>©2019-2020 | Jesmora</span></div>
+    <div class="right-cp">
+      <b>Special Sponsor：</b>
+      <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN"> 蜜蜂云免费CDN</a> | 
+      <a href="https://ins.zmirror.xyz/" target="_blank" rel="noopener noreferrer" title="Instagram（中国）"> Instagram（中国）</a>
+    </div>
   </div>
   <!-- 扫码下载代码 -->
   <!-- <div class="version">
@@ -484,6 +503,7 @@
       }
       updateSelected()
     }
+    
   </script>
 
 </body>
