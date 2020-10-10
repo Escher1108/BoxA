@@ -18,11 +18,11 @@
       element.__defineGetter__('id', function () {
         checkStatus = 'on';
       });
-      
-       setInterval(function(){
+
+      setInterval(function () {
         checkStatus = 'off';
         console.log(element);
-        console.clear();
+        // console.clear();
         if (checkStatus == 'on') {
           window.location.href = 'https://jkgblog.com'
         }
@@ -70,21 +70,22 @@
       if (e.keyCode === 123 || e.ctrlKey) {
         TOTAL()
         return false
-      }else if(e.shiftKey){
+      } else if (e.shiftKey) {
         TOTAL()
         return false
       }
     }
-/*  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-                    alert("禁止访问！");
-                    window.location.href ="https://jkgblog.com";
-                  } else if (/(Android)/i.test(navigator.userAgent)) {
-                  // window.location.href ="https://jkgblog.com";
-                } else {
-                  alert("禁止访问！");
-                  window.location.href ="https://jkgblog.com";
-                };
-                */
+
+    /*  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                        alert("禁止访问！");
+                        window.location.href ="https://jkgblog.com";
+                      } else if (/(Android)/i.test(navigator.userAgent)) {
+                      // window.location.href ="https://jkgblog.com";
+                    } else {
+                      alert("禁止访问！");
+                      window.location.href ="https://jkgblog.com";
+                    };
+                    */
   </script>
   <style>
     * {
@@ -98,7 +99,7 @@
       height: auto;
       width: 100%;
       overflow: hidden;
-      font-family:monospace;
+      font-family: monospace;
     }
 
     @keyframes animate {
@@ -267,11 +268,12 @@
       color: #0f0b01;
       font-size: 0.9rem;
     }
-    
-    .footer-copyright a:hover{
-      color:#37bcce;
+
+    .footer-copyright a:hover {
+      color: #37bcce;
     }
-    /* 弹窗 */
+
+    /* warning */
     .warning {
       width: 100%;
       margin: 0;
@@ -309,9 +311,73 @@
       cursor: pointer;
     }
 
+    /* donate */
+    .donate-box {
+      top: 0;
+      right: -100%;
+      position: absolute;
+      /*绝对定位释放原来位置*/
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 2s;
+      background: linear-gradient(-35deg, rgb(122, 191, 194) 30%, rgb(121, 50, 50) 50%, #3b80ad 20%);
+      animation: animate 10s linear infinite;
+    }
+
+    .donate-box .donate-info {
+      position: absolute;
+      width: 350px;
+      height: 380px;
+      box-shadow: 8px 5px 20px #eee;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .donate-box span::before {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      content: '\f00d';
+      font-family: FontAwesome;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .donate-box .donate-info p {
+      top: 0;
+      left: 5px;
+      font-family: 'Times New Roman', Times, serif;
+      color: snow;
+      padding: 5px;
+    }
+
+    .donate-box .donate-info img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 5px;
+    }
+
+    .donate-box .donate-info h2{
+      text-align: center;
+    }
+
     .shower {
       left: 0;
       transition: 1.5s;
+    }
+
+    .showerd {
+      right: 0;
+      transition: 1.5s;
+    }
+
+    .showerd .donate-info {
+      transition: 1.5s;
+      transform: rotateZ(360deg);
     }
 
 
@@ -331,18 +397,20 @@
         animation: animate 10s infinite linear;
         font-family: serif;
       }
-      .right-cp{
+
+      .right-cp {
         display: none;
       }
 
-      .footer-copyright{
+      .footer-copyright {
         display: flex;
         justify-content: center;
         align-items: center;
       }
     }
-    @media screen and (max-width:350px){
-      .footer-copyright{
+
+    @media screen and (max-width:350px) {
+      .footer-copyright {
         display: none;
       }
     }
@@ -357,7 +425,7 @@
       <section>
         <input id="txtURL" type="text" placeholder="Search" autofocus="">
         <button id="btnGo" type="submit"></button>
-        
+
       </section>
     </div>
   </div>
@@ -369,15 +437,29 @@
       <input type="button" value="关闭" id="closedw">
     </div>
   </div>
+  <!-- 捐赠信息 -->
+  <div class="donate-box">
+    <span id="closedD" title="不赞助"></span>
+    <div class="donate-info">
+      <h2>你想成为FreeStar吗</h2>
+      <p>本站服务皆为了沙盒网站开发，目的是为了检测来源不明的可疑链接，如果你觉得本站对你有所帮助，
+        我希望能够得到你的赞助，缓解本站服务器每月$25的高额支出，赞助金额看你喜欢！</p>
+      <img src="https://tk.jkgblog.com/images/2020/10/10/1602333007.md.jpg" alt="">
+    </div>
+  </div>
   <!-- copyright -->
   <div class="footer-copyright">
     <div><b>Copyright：</b><span>©2019-2020 | Jesmora</span></div>
     <div class="right-cp">
       <b>Special Sponsor：</b>
-      <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN"> 蜜蜂云免费CDN</a> | 
-      <a href="https://ins.zmirror.xyz/" target="_blank" rel="noopener noreferrer" title="Instagram（中国）"> Instagram（中国）</a>
+      <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN"> 蜜蜂云免费CDN</a> |
+      <a href="https://ins.zmirror.xyz/" target="_blank" rel="noopener noreferrer" title="Instagram（中国）">
+        Instagram（中国）</a>
     </div>
+    <div class="donate"><button id="donate"
+        style="width: 50px;margin-top: 5px;border-radius: 10px;background-color: skyblue;" title="成为赞助商">捐赠</button></div>
   </div>
+
   <!-- 扫码下载代码 -->
   <!-- <div class="version">
 		  <div class="app">
@@ -399,7 +481,26 @@
 			 $('i').show(1500)
 		 })
 		})
-	  </script> -->
+    </script> -->
+  <script>
+    const BTN = () => {
+      document.querySelector("#donate").onclick = function () {
+        document.querySelector('.container').style.display = 'none'
+        document.querySelector('.donate-box').classList.add('showerd')
+      }
+    }
+    BTN()
+
+    const CLSD = () => {
+      document.querySelector('#closedD').onclick = function () {
+        document.querySelector('.warning').classList.remove('shower')
+        document.querySelector('.donate-box').classList.remove('showerd')
+        document.querySelector('.container').style.display = 'block'
+      }
+    }
+    CLSD()
+
+  </script>
   <script>
     const PAGE_CONF_SET = 110
     const PAGE_CONF_GET = 111
@@ -503,7 +604,7 @@
       }
       updateSelected()
     }
-    
+
   </script>
 
 </body>
