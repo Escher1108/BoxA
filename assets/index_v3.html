@@ -67,24 +67,40 @@
 
     //禁止键盘事件
     document.onkeydown = function (e) {
-      if (e.keyCode === 73 || e.keyCode === 105) {
-        TOTAL()
-        return false
-      } else if (e.keyCode === 74 || e.keyCode === 106) {
-        TOTAL()
-        return false
-      } else if (e.keyCode === 75 || e.keyCode === 107) {
-        TOTAL()
-        return false
-      } else if (e.keyCode === 67 || e.keyCode === 99) {
-        TOTAL()
-        return false
-      } else if (e.keyCode === 123) {
+      // if (e.keyCode === 73 || e.keyCode === 105) {
+      //   TOTAL()
+      //   return false
+      // } else if (e.keyCode === 74 || e.keyCode === 106) {
+      //   TOTAL()
+      //   return false
+      // } else if (e.keyCode === 75 || e.keyCode === 107) {
+      //   TOTAL()
+      //   return false
+      // } else if (e.keyCode === 67 || e.keyCode === 99) {
+      //   TOTAL()
+      //   return false
+      // } else 
+      if (e.keyCode === 123) {
         TOTAL()
         return false
       }
     }
+    // function addMeta(name, content) {
+    //     //手动添加mate标签
+    //     let meta = document.createElement('meta');
+    //     meta.content = content;
+    //     meta.httpEquiv = name;
+    //     document.getElementsByTagName('head')[0].appendChild(meta);
+    //   }
 
+
+    // 网络监听
+    window.addEventListener('online', function () {
+      location.reload()
+    });
+    window.addEventListener('offline', function () {
+      alert('网络已断开，请检查！')
+    });
     /*  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
                         alert("禁止访问！");
                         window.location.href ="https://jkgblog.com";
@@ -482,7 +498,7 @@
     <div class="warning-box">
       <h2>警告</h2>
       <p>STOP，请停止你的小动作！</p>
-      <p>请在中文输入法下进行操作！</p>
+      <p>小人专用页面，您老看到这个界面说明你手欠！</p>
       <input type="button" value="关闭" id="closedw">
     </div>
   </div>
