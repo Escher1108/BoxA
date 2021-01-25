@@ -2,7 +2,7 @@
  * @Author: Escher1108
  * @Website: https://jkgblog.com
  * @Date: 2020-07-26 21:53:07
- * @LastEditTime: 2021-01-25 22:26:32
+ * @LastEditTime: 2021-01-25 22:48:47
  * @LastEditors: Do not edit
  * @FilePath: \HBc:\Users\Escher\Desktop\BoxA\conf.js
  * @Description: 耶斯莫拉
@@ -101,7 +101,7 @@ jsproxy_config({
       redir: 'https://php.net/'
     },
     'https://www.xvideos.com/': {
-      redir: 'https://www.zhihu.com/question/27825905'
+      redir: 'https://jkgblog.com/'
     },
     'http://haha.com/': {
       content: 'Hello World'
