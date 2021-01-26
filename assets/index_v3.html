@@ -25,7 +25,7 @@
         console.log(element);
         // console.clear();
         if (checkStatus == 'on') {
-          window.location.href = 'https://jkgblog.com'
+          // window.location.href = 'https://jkgblog.com'
         }
       }, 1000)
     }
@@ -256,7 +256,7 @@
       left: 2px;
     }
 
-    .box #selNodes {
+    .box #selNode {
       width: 110px;
       height: 25px;
       outline: none;
@@ -700,12 +700,9 @@
     </div>
 
     <!-- 切换线路 -->
-    <div class="box">
-      <select id="selNodes">]
-        <option value="https://js.zmirror.xyz">当前节点(联通)</option>
-        <option value="https://ss.navs.tk">电信/移动(高速)</option>
-      </select>
-    </div>
+    <!-- <div class="box">
+      <select id="selNode"></select>
+    </div> -->
   </div>
   <!-- 非法操作警告 -->
   <div class="warning">
@@ -831,10 +828,11 @@
     CLSD()
 
     // 自定义线路
-    selNodes.onchange = function(){
-      const items = this.options[this.selectedIndex]
-      window.location.href = items.value
-    }
+    // selNodes.onchange = function () {
+    //   const items = this.options[this.selectedIndex]
+    //   let url = window.location.href;
+    //   items.value = url
+    // }
 
   </script>
   <script>
@@ -853,6 +851,15 @@
     sw.addEventListener('message', onSwMsg)
     sendMsgToSw(PAGE_READY_CHECK)
 
+    // 加密字符串
+    function randomString(length) {
+      var str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var result = '';
+      for (var i = length; i > 0; --i)
+        result += str[Math.floor(Math.random() * str.length)];
+      return result;
+    }
+
     btnGo.onclick = function () {
       // 获取输入框的值进行提示
       const text = txtURL.value.trim()
@@ -860,7 +867,8 @@
         alert("违法站点，将重定向到安全站点！")
       }
       if (text) {
-        const url = './-----' + text
+        const url = `./${randomString(38)}#` + text
+        // const url = `./-----` + text;
         open(url, '_blank', 'noopener,noreferrer')
       }
     }
@@ -928,15 +936,15 @@
     //   ['blogger', ''],
     // ]
 
-//     function showIcons() {
-//       list.innerHTML = SITE_LIST.map(v => {
-//         let [id, url] = v
-//         url = url || `www.${id}.com/`
-//         return `\
-// <a rel="noopener noreferrer" href=./-----https://${url}>\
-// <img width=128 height=128 src=__sys__/assets/ico/${id}.png></a>`
-//       }).join('')
-//     }
+    //     function showIcons() {
+    //       list.innerHTML = SITE_LIST.map(v => {
+    //         let [id, url] = v
+    //         url = url || `www.${id}.com/`
+    //         return `\
+    // <a rel="noopener noreferrer" href=./-----https://${url}>\
+    // <img width=128 height=128 src=__sys__/assets/ico/${id}.png></a>`
+    //       }).join('')
+    //     }
 
     function addNodeItem(id, text) {
       const optEl = document.createElement('option')
