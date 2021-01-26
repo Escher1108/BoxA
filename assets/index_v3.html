@@ -256,7 +256,7 @@
       left: 2px;
     }
 
-    .box #selNode {
+    .box #selNodes {
       width: 110px;
       height: 25px;
       outline: none;
@@ -701,7 +701,10 @@
 
     <!-- 切换线路 -->
     <div class="box">
-      <select id="selNode"></select>
+      <select id="selNodes">]
+        <option value="https://js.zmirror.xyz">当前节点(联通)</option>
+        <option value="https://ss.navs.tk">电信/移动(高速)</option>
+      </select>
     </div>
   </div>
   <!-- 非法操作警告 -->
@@ -828,10 +831,10 @@
     CLSD()
 
     // 自定义线路
-    // selNodes.onchange = function(){
-    //   const items = this.options[this.selectedIndex]
-    //   window.location.href = items.value
-    // }
+    selNodes.onchange = function(){
+      const items = this.options[this.selectedIndex]
+      window.location.href = items.value
+    }
 
   </script>
   <script>
