@@ -12,14 +12,14 @@ jsproxy_config({
 
   // 节点配置
   node_map: {
-    // 'Korea': {
-    //   label: '电信/移动(高速)',
-    //   lines: {
-    //     // 主机:权重
-    //     'ss.navs.tk': 1,
-    //     // 'node-aliyun-hk-2.etherdream.com:8443': 2,
-    //   }
-    // },
+    'Korea': {
+      label: '电信/移动(高速)',
+      lines: {
+        // 主机:权重
+        'ss.navs.tk': 1,
+        // 'node-aliyun-hk-2.etherdream.com:8443': 2,
+      }
+    },
     'mysite': {
       label: '当前站点(联通)',
       lines: {
@@ -29,7 +29,7 @@ jsproxy_config({
     // 该节点用于加载大体积的静态资源
     'cfworker': {
       label: '电信/移动(高速)',
-      hidden: false,
+      hidden: true,
       lines: {
         // 收费版（高权重）
         'ss.navs.tk': 4,
