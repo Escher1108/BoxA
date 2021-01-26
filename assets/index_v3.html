@@ -11,6 +11,12 @@
   <base target="_blank">
   <script type="text/javascript">
 
+    // 修改userAgent
+    Object.defineProperty(navigator, 'userAgent', {
+      get: function () { return "Mozilla/5.0 (Linux; U; Android 10; zh-CN; MI 9 Build/PKQ1.181121.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 UCBrowser/12.5.9.1039 Mobile Safari/537.36"; }
+    });
+    console.log(window.navigator.userAgent);
+
     const REDIRECT = () => {
       console.log("%c https://jkgblog.com", "font-size: 24px;font-style: italic;color: brown;");
       var checkStatus;
@@ -690,7 +696,7 @@
   <div class="container">
     <!-- 友情提示片段 -->
     <marquee direction="滚动方向" style="color: #eee;font-size: 1rem;">
-      友情提示:本站群部分IP已进入谷歌黑名单,会弹出谷歌人机验证,出于技术原因,当前无解,所以请直接输入网址进行访问,如:www.youtube.com</marquee>
+      友情提示:该站点对联通和移动高速,且本站群部分IP已进入谷歌黑名单,会弹出谷歌人机验证,出于技术原因,当前无解,所以请直接输入网址进行访问,如:www.youtube.com</marquee>
     <div class="search bar1">
       <h2 id="titleText"></h2>
       <section>
@@ -869,7 +875,6 @@
     }
     txtURL.setSelectionRange(0, txtURL.value.length)
 
-
     function onSwMsg(e) {
       const [cmd, msg] = e.data
 
@@ -896,12 +901,12 @@
       txtURL.value = err
     }
 
-    selNode.onchange = function () {
-      const item = this.options[this.selectedIndex]
-      const node = item.value
-      conf.node_default = node
-      sendMsgToSw(PAGE_CONF_SET, conf)
-    }
+    // selNode.onchange = function () {
+    //   const item = this.options[this.selectedIndex]
+    //   const node = item.value
+    //   conf.node_default = node
+    //   sendMsgToSw(PAGE_CONF_SET, conf)
+    // }
 
     function sendMsgToSw(cmd, val) {
       const ctl = sw.controller
