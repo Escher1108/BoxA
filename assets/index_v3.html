@@ -257,7 +257,7 @@
     }
 
     .box #selNode {
-      width: auto;
+      width: 110px;
       outline: none;
       border: none;
       background-color: #ffa500;
@@ -734,10 +734,7 @@
 
   <!-- 切换线路 -->
   <div class="box">
-    <select id="selNode">
-      <!-- <option value="">当前节点(联通)</option>
-      <option value="">电信/移动(高速)</option> -->
-    </select>
+    <select id="selNode"></select>
   </div>
 
   <!-- copyright -->
@@ -851,13 +848,10 @@
 
     btnGo.onclick = function () {
       // 获取输入框的值进行提示
-      let iptValue = document.querySelector("#txtURL")
-      if (iptValue.value == "www.pornhub.com") {
-        alert("违法站点，将重定向到安全站点！")
-      } else if (iptValue.value == "www.xvideos.com") {
+      const text = txtURL.value.trim()
+      if (text == "www.pornhub.com" || text == "www.xvideos.com") {
         alert("违法站点，将重定向到安全站点！")
       }
-      const text = txtURL.value.trim()
       if (text) {
         const url = './-----' + text
         open(url, '_blank', 'noopener,noreferrer')
