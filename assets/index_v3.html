@@ -492,6 +492,11 @@
         width: 42px;
         cursor: pointer; */
       }
+
+      .deng-box,
+      .deng-box1 {
+        display: none;
+      }
     }
 
     @media screen and (max-width:350px) {
@@ -510,6 +515,11 @@
         position: absolute;
         bottom: 10px;
         left: 10px;
+      }
+
+      .deng-box,
+      .deng-box1 {
+        display: none;
       }
     }
   </style>
@@ -696,7 +706,9 @@
   <div class="container">
     <!-- 友情提示片段 -->
     <marquee direction="滚动方向" style="color: #eee;font-size: 1rem;">
-      友情提示:该站点对联通和移动高速,且本站群部分IP已进入谷歌黑名单,会弹出谷歌人机验证,出于技术原因,当前无解,所以请直接输入网址进行访问,如:www.youtube.com</marquee>
+      友情提示:该站点: <b style="color: #ff0000;" id="siteVal"></b> 对<b style="color: #37bcce;"
+        id="textVal"></b>,且本站群部分IP已进入谷歌黑名单,会弹出谷歌人机验证,出于技术原因,当前无解,所以请直接输入网址进行访问,如:www.youtube.com。<span id="vip"></span>
+    </marquee>
     <div class="search bar1">
       <h2 id="titleText"></h2>
       <section>
@@ -840,6 +852,18 @@
     //   items.value = url
     // }
 
+    // 设置滚动字条
+    function mq() {
+      let [text, text1, url] = ["联通/移动高速", "全网线路高速", window.location.hostname];
+      document.querySelector("#vip").innerText = "VIP线路已隐藏，三网优化哦~~~快找找彩蛋吧！";
+      if (url == "js.zmirror.xyz" || url == "ss.navs.tk") {
+        document.querySelector("#siteVal").innerText = "https://" + url;
+        document.querySelector("#textVal").innerText = text;
+        document.querySelector("#textVal").innerText = text1;
+      }
+
+    }
+    mq();
   </script>
   <script>
     const PAGE_CONF_SET = 110
