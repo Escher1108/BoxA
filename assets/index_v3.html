@@ -60,7 +60,7 @@
       const WARNBOX = document.querySelector('.warning-box')
       const CONTAINER = document.querySelector('.container')
       WARN.classList.add("shower")
-      CONTAINER.style.display = 'none'
+      CONTAINER.style.display = 'none';
       document.querySelector('#closedw').onclick = function () {
         document.querySelector('.warning').classList.remove("shower")
         document.querySelector('.container').style.display = 'block'
@@ -255,22 +255,8 @@
       transform: rotateY(180deg);
     }
 
-    /* 线路切换 */
     .box {
-      margin-top: 15px;
-      font-weight: 500;
-      position: absolute;
-      bottom: 52px;
-      left: 2px;
-    }
-
-    .box #selNode {
-      width: 110px;
-      height: 25px;
-      outline: none;
-      border: none;
-      background-color: #ffa500;
-      border-radius: 2px;
+      display: none;
     }
 
     .version {
@@ -498,8 +484,27 @@
         display: none;
       }
 
-      marquee{
+      marquee {
         display: none;
+      }
+
+      .box {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        /* border: 1px red solid; */
+        display: flex;
+        margin-top: 15px;
+        justify-content: space-around;
+        color: #eee;
+      }
+
+      .box .gg {
+        width: 50px;
+        height: 25px;
+        padding: 3px;
+        background-color: #ffa500;
+        border-radius: 15px;
       }
 
     }
@@ -514,20 +519,12 @@
         display: none;
       }
 
-      .box {
-        margin-top: 15px;
-        font-weight: 500;
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-      }
-
       .deng-box,
       .deng-box1 {
         display: none;
       }
 
-      marquee{
+      marquee {
         display: none;
       }
     }
@@ -721,16 +718,26 @@
     <div class="search bar1">
       <h2 id="titleText"></h2>
       <section>
-        <input id="txtURL" type="text" placeholder="Search" autofocus="">
+        <input id="txtURL" type="text" placeholder="Search | 默认谷歌搜索" autofocus="">
         <button id="btnGo" type="submit"></button>
       </section>
-    </div>
 
-    <!-- 切换线路 -->
-    <!-- <div class="box">
-      <select id="selNode"></select>
-    </div> -->
+      <!-- 切换搜索引擎 -->
+      <div class="box">
+        <div class="gg">
+          <b id="baidu" onclick="sosoIt(1)">百度</b>
+        </div>
+        <div class="gg">
+          <b id="ss_360" onclick="sosoIt(2)">360</b>
+        </div>
+        <div class="gg">
+          <b id="sg" onclick="sosoIt(3)">搜狗</b>
+        </div>
+      </div>
+    </div>
   </div>
+
+
   <!-- 非法操作警告 -->
   <div class="warning">
     <div class="warning-box">
@@ -863,18 +870,32 @@
 
     // 设置滚动字条
     function mq() {
-      let [text, text1, url,urlText] = ["联通/移动高速", "全网线路高速", window.location.hostname,"https://"];
+      let [text, text1, url, urlText] = ["联通/移动高速", "全网线路高速", window.location.hostname, "https://"];
       document.querySelector("#vip").innerText = "VIP线路已隐藏，三网优化哦~~~快找找彩蛋吧！";
       if (url == "js.zmirror.xyz") {
         document.querySelector("#siteVal").innerText = urlText + url;
         document.querySelector("#textVal").innerText = text;
-      }else if(url == "ss.navs.tk"){
+      } else if (url == "ss.navs.tk") {
         document.querySelector("#siteVal").innerText = urlText + url;
         document.querySelector("#textVal").innerText = text1;
       }
 
     }
     mq();
+
+    // 切换搜索引擎
+    function sosoIt(obj) {
+      var wd = document.getElementById("txtURL").value;
+      if (obj == 1) {
+        window.open("http://www.baidu.com/s?wd=" + wd)
+      }
+      if (obj == 2) {
+        window.open("https://www.so.com/s?q=" + wd)
+      }
+      if(obj==3){
+		    window.open("http://www.sogou.com/web?query="+wd)
+	    }
+    }
   </script>
   <script>
     const PAGE_CONF_SET = 110
