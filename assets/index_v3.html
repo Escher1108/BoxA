@@ -8,6 +8,7 @@
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   <base target="_blank">
   <script type="text/javascript">
 
@@ -531,7 +532,7 @@
   </style>
 
   <!-- 灯笼 -->
-  <style>
+  <!-- <style>
     .deng-box {
       position: fixed;
       top: -40px;
@@ -704,7 +705,7 @@
         -webkit-transform: rotate(-10deg)
       }
     }
-  </style>
+  </style> -->
 </head>
 
 <body>
@@ -736,7 +737,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- 非法操作警告 -->
   <div class="warning">
@@ -775,7 +775,7 @@
           rel="noopener noreferrer">jkgblog.com</a></span></div>
     <div class="right-cp">
       <span>Thanks: </span>
-      <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN"> mfyidc CDN</a> |
+      <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN" id="cdn"></a> |
       <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API" target="_blank"
         rel="noopener noreferrer" title="Service Worker">
         Service Worker</a>
@@ -786,7 +786,7 @@
 
 
     <!-- 灯笼1 -->
-    <div class="deng-box">
+    <!-- <div class="deng-box">
       <div class="deng">
         <div class="xian"></div>
         <div class="deng-a">
@@ -799,10 +799,10 @@
           <div class="shui-b"></div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- 灯笼2 -->
-    <div class="deng-box1">
+    <!-- <div class="deng-box1">
       <div class="deng">
         <div class="xian"></div>
         <div class="deng-a">
@@ -815,7 +815,7 @@
           <div class="shui-b"></div>
         </div>
       </div>
-    </div>
+    </div> -->
 
   </div>
 
@@ -870,14 +870,19 @@
 
     // 设置滚动字条
     function mq() {
-      let [text, text1, url, urlText] = ["联通/移动高速", "全网线路高速", window.location.hostname, "https://"];
-      document.querySelector("#vip").innerText = "VIP线路已隐藏，三网优化哦~~~快找找彩蛋吧！";
+      let [text, text1, url, urlText, jsz, ssz] = ["联通/移动高速", "全网高速线路", window.location.hostname, "https://", "<a href='https://ss.navs.tk'>切换到全网高速线路</a>", "<a href='https://js.zmirror.xyz'>切换到联通/移动高速</a>"];
       if (url == "js.zmirror.xyz") {
         document.querySelector("#siteVal").innerText = urlText + url;
         document.querySelector("#textVal").innerText = text;
+        document.querySelector("#vip").innerHTML = `${jsz}`;
+        document.querySelector('#cdn').setAttribute("href","https://cdn.mfyidc.com/")
+        document.querySelector('#cdn').innerText = '蜜蜂云CDN'
       } else if (url == "ss.navs.tk") {
         document.querySelector("#siteVal").innerText = urlText + url;
         document.querySelector("#textVal").innerText = text1;
+        document.querySelector("#vip").innerHTML = `${ssz}`;
+        document.querySelector('#cdn').setAttribute("href","https://wujicloud.cn/")
+        document.querySelector('#cdn').innerText = '武极云CDN'
       }
 
     }
@@ -892,9 +897,9 @@
       if (obj == 2) {
         window.open("https://www.so.com/s?q=" + wd)
       }
-      if(obj==3){
-		    window.open("http://www.sogou.com/web?query="+wd)
-	    }
+      if (obj == 3) {
+        window.open("http://www.sogou.com/web?query=" + wd)
+      }
     }
   </script>
   <script>
