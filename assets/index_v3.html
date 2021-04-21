@@ -8,6 +8,7 @@
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   <base target="_blank">
   <script type="text/javascript">
 
@@ -60,7 +61,7 @@
       const WARNBOX = document.querySelector('.warning-box')
       const CONTAINER = document.querySelector('.container')
       WARN.classList.add("shower")
-      CONTAINER.style.display = 'none'
+      CONTAINER.style.display = 'none';
       document.querySelector('#closedw').onclick = function () {
         document.querySelector('.warning').classList.remove("shower")
         document.querySelector('.container').style.display = 'block'
@@ -255,22 +256,8 @@
       transform: rotateY(180deg);
     }
 
-    /* 线路切换 */
     .box {
-      margin-top: 15px;
-      font-weight: 500;
-      position: absolute;
-      bottom: 52px;
-      left: 2px;
-    }
-
-    .box #selNode {
-      width: 110px;
-      height: 25px;
-      outline: none;
-      border: none;
-      background-color: #ffa500;
-      border-radius: 2px;
+      display: none;
     }
 
     .version {
@@ -443,16 +430,16 @@
 
     /* 弹窗警告 */
     /* .warnText { */
-      /* width: 100%;
+    /* width: 100%;
       height: 100vh;
       position: absolute; */
-      /* background-color: #9E9C9C; */
-      /* background: #00d2ff; */
-      /* fallback for old browsers */
-      /* background: -webkit-linear-gradient(to right, #928DAB, #00d2ff); */
-      /* Chrome 10-25, Safari 5.1-6 */
-      /* background: linear-gradient(to right, #928DAB, #00d2ff); */
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-color: #9E9C9C; */
+    /* background: #00d2ff; */
+    /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #928DAB, #00d2ff); */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #928DAB, #00d2ff); */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     /* } */
 
@@ -541,6 +528,25 @@
         display: none;
       }
 
+      .box {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        /* border: 1px red solid; */
+        display: flex;
+        margin-top: 15px;
+        justify-content: space-around;
+        color: #eee;
+      }
+
+      .box .gg {
+        width: 50px;
+        height: 25px;
+        padding: 3px;
+        background-color: #ffa500;
+        border-radius: 15px;
+      }
+
     }
 
     @media screen and (max-width:350px) {
@@ -551,14 +557,6 @@
       .donate,
       .donate-info {
         display: none;
-      }
-
-      .box {
-        margin-top: 15px;
-        font-weight: 500;
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
       }
 
       .deng-box,
@@ -760,16 +758,25 @@
     <div class="search bar1">
       <h2 id="titleText"></h2>
       <section>
-        <input id="txtURL" type="text" placeholder="Search" autofocus="">
+        <input id="txtURL" type="text" placeholder="Search | 默认谷歌搜索" autofocus="">
         <button id="btnGo" type="submit"></button>
       </section>
-    </div>
 
-    <!-- 切换线路 -->
-    <!-- <div class="box">
-      <select id="selNode"></select>
-    </div> -->
+      <!-- 切换搜索引擎 -->
+      <div class="box">
+        <div class="gg">
+          <b id="baidu" onclick="sosoIt(1)">百度</b>
+        </div>
+        <div class="gg">
+          <b id="ss_360" onclick="sosoIt(2)">360</b>
+        </div>
+        <div class="gg">
+          <b id="sg" onclick="sosoIt(3)">搜狗</b>
+        </div>
+      </div>
+    </div>
   </div>
+
   <!-- 非法操作警告 -->
   <div class="warning">
     <div class="warning-box">
@@ -820,7 +827,11 @@
           rel="noopener noreferrer">jkgblog.com</a></span></div>
     <div class="right-cp">
       <span>Thanks: </span>
+
       <!-- <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云CDN"> mfyidc CDN</a> | -->
+
+      <!-- <a href="https://cdn.mfyidc.com/" target="_blank" rel="noopener noreferrer" title="蜜蜂云免费CDN" id="cdn"></a> | -->
+
       <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API" target="_blank"
         rel="noopener noreferrer" title="Service Worker">
         Service Worker</a>
@@ -920,14 +931,41 @@
       if (url == "js.zmirror.xyz") {
         document.querySelector("#siteVal").innerText = urlText + url;
         document.querySelector("#textVal").innerText = text;
-      } else if (url == "ss.navs.tk") {
-        document.querySelector("#siteVal").innerText = urlText + url;
-        document.querySelector("#textVal").innerText = text1;
-      }
 
+        let [text, text1, url, urlText, jsz, ssz] = ["联通/移动高速", "全网高速线路", window.location.hostname, "https://", "<a href='https://ss.navs.tk'>切换到全网高速线路</a>", "<a href='https://js.zmirror.xyz'>切换到联通/移动高速</a>"];
+        if (url == "js.zmirror.xyz") {
+          document.querySelector("#siteVal").innerText = urlText + url;
+          document.querySelector("#textVal").innerText = text;
+          document.querySelector("#vip").innerHTML = `${jsz}`;
+          document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
+          document.querySelector('#cdn').innerText = '蜜蜂云CDN'
+        } else if (url == "ss.navs.tk") {
+          document.querySelector("#siteVal").innerText = urlText + url;
+          document.querySelector("#textVal").innerText = text1;
+          document.querySelector("#vip").innerHTML = `${ssz}`;
+          document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
+          document.querySelector('#cdn').innerText = '武极云CDN'
+        }
+
+      }
+      mq();
+
+      // 切换搜索引擎
+      function sosoIt(obj) {
+        var wd = document.getElementById("txtURL").value;
+        if (obj == 1) {
+          window.open("http://www.baidu.com/s?wd=" + wd)
+        }
+        if (obj == 2) {
+          window.open("https://www.so.com/s?q=" + wd)
+        }
+        if (obj == 3) {
+          window.open("http://www.sogou.com/web?query=" + wd)
+        }
+      }
     }
-    mq();
   </script>
+
   <script>
     const PAGE_CONF_SET = 110
     const PAGE_CONF_GET = 111
