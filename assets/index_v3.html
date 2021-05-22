@@ -152,7 +152,7 @@
         background-image: url("https://w.wallhaven.cc/full/9m/wallhaven-9mzm21.jpg");
       }
 
-      75%{
+      75% {
         background-image: url('https://w.wallhaven.cc/full/z8/wallhaven-z8p5lg.png');
       }
 
@@ -771,11 +771,7 @@
     <!-- 友情提示片段 -->
     <!-- <marquee direction="滚动方向" style="color: #eee;font-size: 1rem;">
       友情提示:该站点<b style="color: #ff0000;" id="siteVal"></b> 对<b style="color: #37bcce;"
-<<<<<<< HEAD
         id="textVal"></b>,且本站群部分IP已进入谷歌黑名单,会弹出谷歌人机验证,出于技术原因,当前无解,所以请直接输入网址进行访问,如:www.youtube.com。<span id="vip"></span>
-=======
-        id="textVal"></b>,且本站群部分IP已进入谷歌黑名单,会弹出谷歌人机验证,出于技术原因,当前无解,所以请直接输入网址进行访问(重点)!如:www.youtube.com。<span id="vip"></span>
->>>>>>> 1a36e5b536c98c69b53ea1802a3e36befc29a6d7
     </marquee> -->
     <div class="search bar1">
       <h2 id="titleText"></h2>
@@ -845,15 +841,14 @@
 
   <!-- copyright -->
   <div class="footer-copyright">
-<<<<<<< HEAD
+
     <div><b>Copyright：</b><span>©2019-2022 | <a style="font-size: 1.2rem;" href="https://jkgblog.com" target="_blank"
           rel="noopener noreferrer">jkgblog.com</a></span></div>
-=======
-    <div><b>Copyright：</b><span>©2019-2022 
-       <a style="font-size: 1.2rem;" href="#" target="_blank"
-          rel="noopener noreferrer"></a></span>
-        </div>
->>>>>>> 1a36e5b536c98c69b53ea1802a3e36befc29a6d7
+
+    <div><b>Copyright：</b><span>©2019-2022
+        <a style="font-size: 1.2rem;" href="#" target="_blank" rel="noopener noreferrer"></a></span>
+    </div>
+
     <div class="right-cp">
       <span>Thanks: </span>
 
@@ -954,66 +949,54 @@
     // }
 
     // 设置滚动字条
-    function mq() {
-      let [text, text1, url, urlText] = ["联通/移动高速", "全网线路高速", window.location.hostname, "https://"];
-      document.querySelector("#vip").innerText = "VIP线路已隐藏，三网优化哦~~~快找找彩蛋吧！";
-      if (url == "js.zmirror.xyz") {
-        document.querySelector("#siteVal").innerText = urlText + url;
-        document.querySelector("#textVal").innerText = text;
-<<<<<<< HEAD
-        document.querySelector("#vip").innerHTML = `${jsz}`;
-        document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
-        document.querySelector('#cdn').innerText = '蜜蜂云CDN'
-      } else if (url == "ss.navs.tk") {
-        document.querySelector("#siteVal").innerText = urlText + url;
-        document.querySelector("#textVal").innerText = text1;
-        document.querySelector("#vip").innerHTML = `${ssz}`;
-        document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
-        document.querySelector('#cdn').innerText = '武极云CDN'
-      }
-=======
->>>>>>> 1a36e5b536c98c69b53ea1802a3e36befc29a6d7
+    // function mq() {
+    //   let [text, text1, url, urlText] = ["联通/移动高速", "全网线路高速", window.location.hostname, "https://"];
+    //   document.querySelector("#vip").innerText = "VIP线路已隐藏，三网优化哦~~~快找找彩蛋吧！";
+    //   if (url == "js.zmirror.xyz") {
+    //     document.querySelector("#siteVal").innerText = urlText + url;
+    //     document.querySelector("#textVal").innerText = text;
+    //     document.querySelector("#vip").innerHTML = `${jsz}`;
+    //     document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
+    //     document.querySelector('#cdn').innerText = '蜜蜂云CDN'
+    //   } else if (url == "ss.navs.tk") {
+    //     document.querySelector("#siteVal").innerText = urlText + url;
+    //     document.querySelector("#textVal").innerText = text1;
+    //     document.querySelector("#vip").innerHTML = `${ssz}`;
+    //     document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
+    //     document.querySelector('#cdn').innerText = '武极云CDN'
+    //   }
 
-        let [text, text1, url, urlText, jsz, ssz] = ["联通/移动高速", "全网高速线路", window.location.hostname, "https://", "<a href='https://ss.navs.tk'>切换到全网高速线路</a>", "<a href='https://js.zmirror.xyz'>切换到联通/移动高速</a>"];
-        if (url == "js.zmirror.xyz") {
-          document.querySelector("#siteVal").innerText = urlText + url;
-          document.querySelector("#textVal").innerText = text;
-          document.querySelector("#vip").innerHTML = `${jsz}`;
-          document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
-          document.querySelector('#cdn').innerText = '蜜蜂云CDN'
-        } else if (url == "ss.navs.tk") {
-          document.querySelector("#siteVal").innerText = urlText + url;
-          document.querySelector("#textVal").innerText = text1;
-          document.querySelector("#vip").innerHTML = `${ssz}`;
-          document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
-          document.querySelector('#cdn').innerText = '武极云CDN'
-        }
 
-      }
-<<<<<<< HEAD
-      if (obj == 2) {
-        window.open("https://www.bing.com/search?q=" + wd)
-      }
-      if (obj == 3) {
-        window.open("https://www.sogou.com/web?query=" + wd)
-=======
-      mq();
+    //   let [text, text1, url, urlText, jsz, ssz] = ["联通/移动高速", "全网高速线路", window.location.hostname, "https://", "<a href='https://ss.navs.tk'>切换到全网高速线路</a>", "<a href='https://js.zmirror.xyz'>切换到联通/移动高速</a>"];
+    //   if (url == "js.zmirror.xyz") {
+    //     document.querySelector("#siteVal").innerText = urlText + url;
+    //     document.querySelector("#textVal").innerText = text;
+    //     document.querySelector("#vip").innerHTML = `${jsz}`;
+    //     document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
+    //     document.querySelector('#cdn').innerText = '蜜蜂云CDN'
+    //   } else if (url == "ss.navs.tk") {
+    //     document.querySelector("#siteVal").innerText = urlText + url;
+    //     document.querySelector("#textVal").innerText = text1;
+    //     document.querySelector("#vip").innerHTML = `${ssz}`;
+    //     document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
+    //     document.querySelector('#cdn').innerText = '武极云CDN'
+    //   }
+
+    // }
 
       // 切换搜索引擎
       function sosoIt(obj) {
         var wd = document.getElementById("txtURL").value;
         if (obj == 1) {
-          window.open("http://www.baidu.com/s?wd=" + wd)
+          window.open("https://www.baidu.com/s?wd=" + wd)
         }
         if (obj == 2) {
-          window.open("https://www.so.com/s?q=" + wd)
+          window.open("https://www.bing.com/search?q=" + wd)
         }
         if (obj == 3) {
-          window.open("http://www.sogou.com/web?query=" + wd)
+          window.open("https://www.sogou.com/web?query=" + wd)
         }
->>>>>>> 1a36e5b536c98c69b53ea1802a3e36befc29a6d7
       }
-    }
   </script>
 
   <script>
