@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-
+<!-- 本代码所有都是屎一样的，等我抽时间整理，以下所有函数简直是屎一样！！！ -->
 <head>
   <title>Public Sandbox Detection</title>
   <meta charset="utf-8">
@@ -8,20 +8,13 @@
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
   <base target="_blank">
   <script type="text/javascript">
-
-    // 修改userAgent
-    Object.defineProperty(navigator, 'userAgent', {
-      get: function () { return "Mozilla/5.0 (Linux; U; Android 10; zh-CN; MI 9 Build/PKQ1.181121.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 UCBrowser/12.5.9.1039 Mobile Safari/537.36"; }
-    });
-    console.log(window.navigator.userAgent);
-
     const REDIRECT = () => {
-      console.log("%c https://jkgblog.com", "font-size: 24px;font-style: italic;color: brown;");
+      console.log("%c 作者：Escher1108", "font-size: 24px;font-style: italic;color: brown;");
       var checkStatus;
       var element = new Image();
+      // let arr = []
       // var element = document.createElement('any');
       element.__defineGetter__('id', function () {
         checkStatus = 'on';
@@ -30,10 +23,10 @@
       setInterval(function () {
         checkStatus = 'off';
         console.log(element);
+        // arr.push(element)
+        // if(arr.length >2) return window.location.href = 'https://01.1011.ml';
         // console.clear();
-        if (checkStatus == 'on') {
-          window.location.href = 'https://jkgblog.com'
-        }
+        if (checkStatus == 'on') return window.location.href = 'https://01.1011.ml';
       }, 1000)
     }
     REDIRECT()
@@ -113,6 +106,9 @@
                       window.location.href ="https://jkgblog.com";
                     };
                     */
+    window.onload = function () {
+      Swal.fire('Any fool can use a computer')
+    }
   </script>
   <style>
     * {
@@ -502,6 +498,29 @@
       transform: rotateZ(360deg);
     }
 
+    .alert {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      /* border: 1px red solid; */
+      top: 10px;
+      right: 10px;
+      /* display: flex; */
+      /* justify-content: space-around; */
+      color: #eee;
+      background-color: #37bcce;
+      border-radius: 5px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .alert ul li{
+      padding: 5px;
+    }
+
+    .alert ul li:nth-child(6){
+      color: #ff0000;
+    }
+
     /* 手机模式 */
     @media screen and (max-width:760px) {
       body {
@@ -565,6 +584,9 @@
         border-radius: 15px;
       }
 
+      .alert {
+        display: none;
+      }
     }
 
     @media screen and (max-width:350px) {
@@ -583,6 +605,10 @@
       }
 
       marquee {
+        display: none;
+      }
+
+      .alert {
         display: none;
       }
     }
@@ -795,6 +821,19 @@
     </div>
   </div>
 
+  <!-- 更新提示 -->
+  <div class="alert">
+    <ul>
+      <li>此次更新版本为V 0.1.3，添加了几台服务器作为边缘网络</li>
+      <li>此次更新，经过测试在手机端95%以上不再弹出谷歌人机验证！请客官放心使用</li>
+      <li>本项目支持输入域名访问！比如输入：www.redtube.com</li>
+      <li>本项目沙箱化，如果出现谷歌人机验证，请直接输入你想要去的网址</li>
+      <li>如果客官有任何问题，请及时与我联系：eschervip#gmail.com</li>
+      <li>如果客官手里有闲钱，点击下右下角进行捐赠以解决服务器开销！</li>
+    </ul>
+    <p style="text-align: center;" id="djs">10</p>
+  </div>
+
   <!-- 非法操作警告 -->
   <div class="warning">
     <div class="warning-box">
@@ -984,19 +1023,33 @@
 
     // }
 
-      // 切换搜索引擎
-      function sosoIt(obj) {
-        var wd = document.getElementById("txtURL").value;
-        if (obj == 1) {
-          window.open("https://www.baidu.com/s?wd=" + wd)
-        }
-        if (obj == 2) {
-          window.open("https://www.bing.com/search?q=" + wd)
-        }
-        if (obj == 3) {
-          window.open("https://www.sogou.com/web?query=" + wd)
-        }
+    // 切换搜索引擎
+    function sosoIt(obj) {
+      var wd = document.getElementById("txtURL").value;
+      if (obj == 1) {
+        window.open("https://www.baidu.com/s?wd=" + wd)
       }
+      if (obj == 2) {
+        window.open("https://www.bing.com/search?q=" + wd)
+      }
+      if (obj == 3) {
+        window.open("https://www.sogou.com/web?query=" + wd)
+      }
+    }
+
+    window.onload = function () {
+      let djs = document.querySelector('#djs');
+      let alt = document.querySelector('.alert');
+      let time = 30;
+      let set = setInterval(function () {
+        time--;
+        djs.innerHTML = time;
+        if (time === 0) {
+          alt.style.display = 'none';
+          clearInterval(set);
+        }
+      }, 1000);
+    }
   </script>
 
   <script>
