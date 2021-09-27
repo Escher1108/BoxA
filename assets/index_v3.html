@@ -15,8 +15,6 @@
       console.log("%c 作者：Escher1108", "font-size: 24px;font-style: italic;color: brown;");
       var checkStatus;
       var element = new Image();
-      // let arr = []
-      // var element = document.createElement('any');
       element.__defineGetter__('id', function () {
         checkStatus = 'on';
       });
@@ -24,10 +22,7 @@
       setInterval(function () {
         checkStatus = 'off';
         console.log(element);
-        // arr.push(element)
-        // if(arr.length >2) return window.location.href = 'https://01.1011.ml';
-        // console.clear();
-        if (checkStatus == 'on') return window.location.href = 'https://01.1011.ml';
+        if (checkStatus == 'on') return window.location.href = 'https://jkgblog.com';
       }, 1000)
     }
     REDIRECT()
@@ -81,14 +76,6 @@
         return false
       }
     }
-    // function addMeta(name, content) {
-    //     //手动添加mate标签
-    //     let meta = document.createElement('meta');
-    //     meta.content = content;
-    //     meta.httpEquiv = name;
-    //     document.getElementsByTagName('head')[0].appendChild(meta);
-    //   }
-
 
     // 网络监听
     window.addEventListener('online', function () {
@@ -122,7 +109,7 @@
       height: auto;
       width: 100%;
       overflow: hidden;
-      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
     }
 
     @keyframes animate {
@@ -509,8 +496,9 @@
       /* border: 1px red solid; */
       top: 10px;
       right: 10px;
-      /* display: flex; */
-      /* justify-content: space-around; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       color: #eee;
       background-color: #37bcce;
       border-radius: 5px;
@@ -835,7 +823,9 @@
       <li>底部的谷歌镜像服务器会休眠，第一次访问稍微慢了点</li>
       <li>如果客官手里有闲钱，点击右下角进行捐赠以解决服务器开销！服务器流量快没了啊!!!</li>
     </ul>
-    <p style="text-align: center;" id="djs">30</p>
+    <img src="./ico/apk.png" alt="" srcset="">
+    <p>(扫描下载客户端)</p>
+    <p id="djs">30</p>
   </div>
 
   <!-- 非法操作警告 -->
@@ -888,11 +878,6 @@
     <div><b>Copyright：</b><span>©2019-2022 | <a style="font-size: 1.2rem;" href="https://jkgblog.com" target="_blank"
           rel="noopener noreferrer">Escher's Log</a></span></div>
 
-    <div><b>links：</b>
-      <span><a href="https://status.zmirror.xyz/">Service Status</a>
-        <a style="font-size: 1.2rem;" href="#" target="_blank" rel="noopener noreferrer"></a></span>
-    </div>
-
     <div class="right-cp">
       <b>Thanks: </b>
 
@@ -906,7 +891,7 @@
       <!-- 服务器 -->
       <img style="width: 1.4rem;height: 1.4rem;object-fit: cover;"
         src="https://i.jpg.dog/file/jpg-dog/1327194bb36352c9e4556e19729cb974.png"
-        alt="1327194bb36352c9e4556e19729cb974.png" border="0" />
+        alt="1327194bb36352c9e4556e19729cb974.png" />
       <a href="https://www.vultr.com/?ref=8873419-6G" target="_blank" rel="noopener noreferrer">免费100美刀</a>
     </div>
     <div class="donate"><button id="donate"
@@ -951,14 +936,14 @@
   <!-- 扫码下载代码 -->
   <!-- <div class="version">
 		  <div class="app">
-		  	<img src="https://tk.jkgblog.com/images/2020/07/26/1.0.9.png">
+		  	<img src="./ico/quora.png">
 		  </div>
 		  
 		  <span id="download"><i class="fa fa-chevron-right"></i><span class="text_">--下载最新版本--</span></span>
 	  </div> -->
 
   <!-- 扫码下载jQuery -->
-  <!--  <script type="text/javascript">
+  <!-- <script type="text/javascript">
 	  	$(function(){
 		 $("#download").click(function(){
 			 $('.app,.text_').fadeIn(2000)
@@ -997,41 +982,6 @@
     //   items.value = url
     // }
 
-    // 设置滚动字条
-    // function mq() {
-    //   let [text, text1, url, urlText] = ["联通/移动高速", "全网线路高速", window.location.hostname, "https://"];
-    //   document.querySelector("#vip").innerText = "VIP线路已隐藏，三网优化哦~~~快找找彩蛋吧！";
-    //   if (url == "js.zmirror.xyz") {
-    //     document.querySelector("#siteVal").innerText = urlText + url;
-    //     document.querySelector("#textVal").innerText = text;
-    //     document.querySelector("#vip").innerHTML = `${jsz}`;
-    //     document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
-    //     document.querySelector('#cdn').innerText = '蜜蜂云CDN'
-    //   } else if (url == "ss.navs.tk") {
-    //     document.querySelector("#siteVal").innerText = urlText + url;
-    //     document.querySelector("#textVal").innerText = text1;
-    //     document.querySelector("#vip").innerHTML = `${ssz}`;
-    //     document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
-    //     document.querySelector('#cdn').innerText = '武极云CDN'
-    //   }
-
-
-    //   let [text, text1, url, urlText, jsz, ssz] = ["联通/移动高速", "全网高速线路", window.location.hostname, "https://", "<a href='https://ss.navs.tk'>切换到全网高速线路</a>", "<a href='https://js.zmirror.xyz'>切换到联通/移动高速</a>"];
-    //   if (url == "js.zmirror.xyz") {
-    //     document.querySelector("#siteVal").innerText = urlText + url;
-    //     document.querySelector("#textVal").innerText = text;
-    //     document.querySelector("#vip").innerHTML = `${jsz}`;
-    //     document.querySelector('#cdn').setAttribute("href", "https://cdn.mfyidc.com/")
-    //     document.querySelector('#cdn').innerText = '蜜蜂云CDN'
-    //   } else if (url == "ss.navs.tk") {
-    //     document.querySelector("#siteVal").innerText = urlText + url;
-    //     document.querySelector("#textVal").innerText = text1;
-    //     document.querySelector("#vip").innerHTML = `${ssz}`;
-    //     document.querySelector('#cdn').setAttribute("href", "https://wujicloud.cn/")
-    //     document.querySelector('#cdn').innerText = '武极云CDN'
-    //   }
-
-    // }
 
     // 切换搜索引擎
     function sosoIt(obj) {
@@ -1050,7 +1000,7 @@
     window.onload = function () {
       let djs = document.querySelector('#djs');
       let alt = document.querySelector('.alert');
-      let time = 30;
+      let time = 60;
       let set = setInterval(function () {
         time--;
         djs.innerHTML = time;
