@@ -9,24 +9,18 @@
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
+  <script src="https://cdn.jsdelivr.net/gh/fz6m/console-ban@3.2/dist/console-ban.min.js"></script>
+
   <base target="_blank">
   <script type="text/javascript">
     function potentiallyBuggyCode() {
-      
-      if (
-        window.outerWidth - window.innerWidth > 20 ||
-        window.outerHeight - window.innerHeight > 100) {
-        document.write(`<h1>非法访问，重定向中...</h1>`);
-        setTimeout(()=>{
-          window.location.href = "https://jkgblog.com"
-        },700)
-        
-      }
+      ConsoleBan.init({
+        redirect: 'https://jkgblog.com'
+      })
     }
-    setInterval(function(){
-      // potentiallyBuggyCode()
-    },1000)
+    setInterval(function () {
+      potentiallyBuggyCode()
+    }, 5000)
 
     function Time() {
       let titleText = document.querySelector('#titleText')
