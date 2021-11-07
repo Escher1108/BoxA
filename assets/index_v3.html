@@ -12,6 +12,7 @@
   <script src="https://cdn.jsdelivr.net/gh/fz6m/console-ban@3.2/dist/console-ban.min.js"></script>
 
   <base target="_blank">
+  
   <script type="text/javascript">
     function potentiallyBuggyCode() {
       ConsoleBan.init({
@@ -20,7 +21,7 @@
     }
     setInterval(function () {
       potentiallyBuggyCode()
-    }, 5000)
+    }, 1000)
 
     function Time() {
       let titleText = document.querySelector('#titleText')
@@ -771,7 +772,16 @@
     }
 
   </script>
-
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?27cdd3520da4090bb77c4c83ab21af25";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
 </body>
 
 </html>
