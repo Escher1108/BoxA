@@ -585,9 +585,10 @@
   <!-- 主要代码 -->
   <div class="container">
     <div class="search bar1">
+      <span>🕒</span>
       <h2 id="titleText"></h2>
       <section>
-        <input id="txtURL" type="text" placeholder="Search | 搜索" autofocus="">
+        <input id="txtURL" type="text" placeholder="Search 🔴🟡🟢 搜索" autofocus="">
         <button id="btnGo" type="submit"></button>
       </section>
 
@@ -620,21 +621,24 @@
   </div>
   <div class="alerts" id="left-alert">
     <ol>
-      <h3>使用快捷键</h3>
-      <li>1.www.youtube.com => youtube,yt,y</li>
-      <li>2.www.wikipedia.org => wikipedia,wiki,wk</li>
-      <li>3.duckduckgo.com => duckduckgo,duck,dg</li>
-      <li>4.jp.pornhub.com => jpporn,jpp,jp</li>
-      <li>5.cn.pornhub.com => cnporn,cnp,cn</li>
-      <li>6.www.redtube.com => redtube,red,r</li>
+      <h3>🐳使用快捷键🐳</h3>
+      <li>www.youtube.com => youtube,yt,y</li>
+      <li>www.wikipedia.org => wikipedia,wiki,wk</li>
+      <li>duckduckgo.com => duckduckgo,duck,dg</li>
+      <li>🔞🔇jp.pornhub.com => jpporn,jpp,jp</li>
+      <li>🔞🔇cn.pornhub.com => cnporn,cnp,cn</li>
+      <li>🔞🔇www.redtube.com => redtube,red,r</li>
       </li>
       <i>(如本站能够完美兼容您想要访问的，不妨联系我添加快捷方式)</i>
+      <p id="hideleft">👉隐藏👈</p>
     </ol>
-    <p id="hideleft">隐藏</p>
+    
   </div>
   <div class="left-alert">
+    <div>👇</div>
     <div>展</div>
     <div>开</div>
+    <div>👆</div>
   </div>
 
   <!-- 非法操作警告 -->
@@ -660,13 +664,13 @@
   <!-- copyright -->
   <div class="footer-copyright">
     <div class="website">
-      <a href="https://jkgblog.com" target="_blank" rel="noopener noreferrer">作者：Escher's Blog</a>
+      <a href="https://jkgblog.com" target="_blank" rel="noopener noreferrer">👨‍🦱Escher's Blog</a>
     </div>
     <div class="website">
-      <a id="donate">赞助</a>
+      <a id="donate">💰赞助💰</a>
     </div>
     <div class="website">
-      <a href="https://t.me/Jsproxy" target="_blank">TG@Jsproxy</a>
+      <a href="https://t.me/Jsproxy" target="_blank">📺TG@Jsproxy</a>
     </div>
   </div>
 
@@ -692,7 +696,6 @@
 		 })
 		})
     </script> -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
     const BTN = () => {
       document.querySelector("#donate").onclick = function () {
@@ -714,15 +717,24 @@
     CLSD()
 
     function hide() {
-      $('.left-alert').hide()
-      $('#hideleft').click(function(){
-        $("#left-alert").hide()
-        $('.left-alert').show()
-      })
-      $('.left-alert').click(function(){
-        $("#left-alert").show()
-        $('.left-alert').hide()
-      })
+      // $('.left-alert').hide()
+      // $('#hideleft').click(function(){
+      //   $("#left-alert").hide()
+      //   $('.left-alert').show()
+      // })
+      // $('.left-alert').click(function(){
+      //   $("#left-alert").show()
+      //   $('.left-alert').hide()
+      // })
+      document.querySelector('.left-alert').style.display = 'none'
+      document.querySelector('#hideleft').onclick=function(){
+        document.querySelector('#left-alert').style.display = 'none'
+        document.querySelector('.left-alert').style.display = 'block'
+      }
+      document.querySelector('.left-alert').onclick=function(){
+        document.querySelector('#left-alert').style.display = 'block'
+        document.querySelector('.left-alert').style.display = 'none'
+      }
     }
     hide()
 
@@ -780,7 +792,7 @@
         alert("违法站点，将重定向到安全站点！")
       }
       if (text) {
-        const url = './-----' + text;
+        const url = './aHR0cHM6Ly9qa2dibG9nLmNvbQ==' + text;
         open(url, '_blank', 'noopener,noreferrer')
       }
     }
