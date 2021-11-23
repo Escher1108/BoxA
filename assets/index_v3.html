@@ -12,7 +12,7 @@
   <script src="https://cdn.jsdelivr.net/gh/fz6m/console-ban@3.2/dist/console-ban.min.js"></script>
 
   <base target="_blank">
-  
+
   <script type="text/javascript">
     function potentiallyBuggyCode() {
       ConsoleBan.init({
@@ -452,6 +452,43 @@
       color: #ff0000;
     }
 
+    .alerts {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      /* animation: bg 40s ease-in-out infinite; */
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+
+    .alerts ol li {
+      padding: 5px;
+    }
+    .left-alert {
+      width: 20px;
+      height: 80px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left:5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      cursor: pointer;
+      /* animation: bg 40s ease-in-out infinite; */
+      border-radius: 5px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
     /* 手机模式 */
     @media screen and (max-width:760px) {
       body {
@@ -502,6 +539,13 @@
       .alert {
         display: none;
       }
+
+      .alerts {
+        display: none;
+      }
+      .left-alert{
+        display: none;
+      }
     }
 
     @media screen and (max-width:350px) {
@@ -524,6 +568,13 @@
       }
 
       .alert {
+        display: none;
+      }
+
+      .alerts {
+        display: none;
+      }
+      .left-alert{
         display: none;
       }
     }
@@ -559,7 +610,6 @@
   <div class="alert">
     <ul>
       <li>此次更新版本为V 1.1.4，更换新的UI</li>
-      <li>国内无法访问的网站直接粘贴访问，比如：www.redtube.com</li>
       <li>网站为沙箱，不保存任何信息</li>
       <li>如果客官有任何问题，请及时与我联系：eschervip#gmail.com</li>
       <li>如果客官手里有闲钱，点击捐赠进行支持，服务器流量快没了啊!!!</li>
@@ -567,6 +617,24 @@
     <img src="https://raw.minibox.tk/Escher1108/BoxA/gh-pages/assets/ico/apk.png" alt="" srcset="">
     <p>(扫描下载客户端)</p>
     <p id="djs">30</p>
+  </div>
+  <div class="alerts" id="left-alert">
+    <ol>
+      <h3>使用快捷键</h3>
+      <li>1.www.youtube.com => youtube,yt,y</li>
+      <li>2.www.wikipedia.org => wikipedia,wiki,wk</li>
+      <li>3.duckduckgo.com => duckduckgo,duck,dg</li>
+      <li>4.jp.pornhub.com => jpporn,jpp,jp</li>
+      <li>5.cn.pornhub.com => cnporn,cnp,cn</li>
+      <li>6.www.redtube.com => redtube,red,r</li>
+      </li>
+      <i>(如本站能够完美兼容您想要访问的，不妨联系我添加快捷方式)</i>
+    </ol>
+    <p id="hideleft">隐藏</p>
+  </div>
+  <div class="left-alert">
+    <div>展</div>
+    <div>开</div>
   </div>
 
   <!-- 非法操作警告 -->
@@ -624,6 +692,7 @@
 		 })
 		})
     </script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
     const BTN = () => {
       document.querySelector("#donate").onclick = function () {
@@ -643,6 +712,19 @@
       }
     }
     CLSD()
+
+    function hide() {
+      $('.left-alert').hide()
+      $('#hideleft').click(function(){
+        $("#left-alert").hide()
+        $('.left-alert').show()
+      })
+      $('.left-alert').click(function(){
+        $("#left-alert").show()
+        $('.left-alert').hide()
+      })
+    }
+    hide()
 
 
     // 切换搜索引擎
@@ -773,8 +855,8 @@
 
   </script>
   <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-  <script>LA.init({id: "JUw1G6nZmii1ioa1",ck: "JUw1G6nZmii1ioa1"})</script>
-  
+  <script>LA.init({ id: "JUw1G6nZmii1ioa1", ck: "JUw1G6nZmii1ioa1" })</script>
+
 </body>
 
 </html>
