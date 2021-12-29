@@ -668,6 +668,7 @@
     </div>
     <div class="website">
       <a id="donate">💰赞助💰</a>
+      <!-- <a href="https:///pay.jkgblog.com" target="_blank">💰赞助💰</a> -->
     </div>
     <div class="website">
       <a href="https://t.me/Jsproxy" target="_blank">📺TG@Jsproxy</a>
@@ -701,8 +702,9 @@
       document.querySelector("#donate").onclick = function () {
         // 存入数据检测
         localStorage.setItem("id", "Jesmora");
-        document.querySelector('.container').style.display = 'none'
-        document.querySelector('.donate-box').classList.add('showerd')
+        window.open('https://pay.jkgblog.com','_blank')
+        // document.querySelector('.container').style.display = 'none'
+        // document.querySelector('.donate-box').classList.add('showerd')
       }
     }
     BTN()
@@ -866,8 +868,6 @@
     }
 
   </script>
-  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-  <script>LA.init({ id: "JUw1G6nZmii1ioa1", ck: "JUw1G6nZmii1ioa1" })</script>
 
 </body>
 
