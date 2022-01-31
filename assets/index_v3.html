@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-<!-- 本代码所有都是屎一样的，等我抽时间整理，以下所有函数简直是屎一样！！！ -->
 
 <head>
   <title>Public Sandbox Detection</title>
@@ -242,7 +241,7 @@
     }
 
     .bar1 button:before {
-      content: "\f002";
+      content: "🔎";
       font-family: FontAwesome;
       font-size: 16px;
       color: #F9F0DA;
@@ -617,7 +616,7 @@
     </ul>
     <img src="https://raw.minibox.tk/Escher1108/BoxA/gh-pages/assets/ico/apk.png" alt="" srcset="">
     <p>(扫描下载客户端)</p>
-    <p id="djs">30</p>
+    <p id="djs">60</p>
   </div>
   <div class="alerts" id="left-alert">
     <ol>
@@ -667,8 +666,8 @@
       <a href="https://jkgblog.com" target="_blank" rel="noopener noreferrer">👨‍🦱Escher's Blog</a>
     </div>
     <div class="website">
-      <a id="donate">💰赞助💰</a>
-      <!-- <a href="https:///pay.jkgblog.com" target="_blank">💰赞助💰</a> -->
+      <!-- <a id="donate">💰赞助💰</a> -->
+      <a href="https:///pay.jkgblog.com"  id="donate" target="_blank">💰赞助💰</a>
     </div>
     <div class="website">
       <a href="https://t.me/Jsproxy" target="_blank">📺TG@Jsproxy</a>
@@ -702,12 +701,11 @@
       document.querySelector("#donate").onclick = function () {
         // 存入数据检测
         localStorage.setItem("id", "Jesmora");
-        window.open('https://pay.jkgblog.com','_blank')
-        // document.querySelector('.container').style.display = 'none'
-        // document.querySelector('.donate-box').classList.add('showerd')
+        document.querySelector('.container').style.display = 'none'
+        document.querySelector('.donate-box').classList.add('showerd')
       }
     }
-    BTN()
+    // BTN()
 
     const CLSD = () => {
       document.querySelector('#closedD').onclick = function () {
@@ -767,6 +765,12 @@
           clearInterval(set);
         }
       }, 1000);
+
+      // 隐藏18+
+      setTimeout(() => {
+        document.querySelector('#left-alert').style.display = 'none'
+        document.querySelector('.left-alert').style.display = 'block'
+      }, 60000);
     }
 
   </script>
@@ -868,6 +872,8 @@
     }
 
   </script>
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>LA.init({ id: "JUw1G6nZmii1ioa1", ck: "JUw1G6nZmii1ioa1" })</script>
 
 </body>
 
