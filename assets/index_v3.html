@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Public Sandbox Detection</title>
+  <title>Public Proxy</title>
   <meta charset="utf-8">
   <meta name="description" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
@@ -183,6 +183,7 @@
 
     div.search {
       padding: 30px 0;
+      /* border: 1px solid red; */
     }
 
     section {
@@ -216,7 +217,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 400px;
-      height: 230px;
+      height: 250px;
+      /* border: 1px solid red; */
     }
 
     .bar1 input {
@@ -471,13 +473,14 @@
     .alerts ol li {
       padding: 5px;
     }
+
     .left-alert {
       width: 20px;
       height: 80px;
       height: auto;
       position: absolute;
       top: 50%;
-      left:5px;
+      left: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -542,7 +545,8 @@
       .alerts {
         display: none;
       }
-      .left-alert{
+
+      .left-alert {
         display: none;
       }
     }
@@ -573,7 +577,8 @@
       .alerts {
         display: none;
       }
-      .left-alert{
+
+      .left-alert {
         display: none;
       }
     }
@@ -631,7 +636,7 @@
       <i>(如本站能够完美兼容您想要访问的，不妨联系我添加快捷方式)</i>
       <p id="hideleft">👉隐藏👈</p>
     </ol>
-    
+
   </div>
   <div class="left-alert">
     <div>👇</div>
@@ -667,7 +672,7 @@
     </div>
     <div class="website">
       <!-- <a id="donate">💰赞助💰</a> -->
-      <a href="https:///pay.jkgblog.com"  id="donate" target="_blank">💰赞助💰</a>
+      <a href="https:///pay.jkgblog.com" id="donate" target="_blank">💰赞助💰</a>
     </div>
     <div class="website">
       <a href="https://t.me/Jsproxy" target="_blank">📺TG@Jsproxy</a>
@@ -727,11 +732,11 @@
       //   $('.left-alert').hide()
       // })
       document.querySelector('.left-alert').style.display = 'none'
-      document.querySelector('#hideleft').onclick=function(){
+      document.querySelector('#hideleft').onclick = function () {
         document.querySelector('#left-alert').style.display = 'none'
         document.querySelector('.left-alert').style.display = 'block'
       }
-      document.querySelector('.left-alert').onclick=function(){
+      document.querySelector('.left-alert').onclick = function () {
         document.querySelector('#left-alert').style.display = 'block'
         document.querySelector('.left-alert').style.display = 'none'
       }
@@ -766,11 +771,24 @@
         }
       }, 1000);
 
-      // 隐藏18+
-      setTimeout(() => {
-        document.querySelector('#left-alert').style.display = 'none'
-        document.querySelector('.left-alert').style.display = 'block'
-      }, 60000);
+
+
+      // 手机端隐藏
+      let isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/gi)
+      let isMobile = isIOS || navigator.userAgent.match(/Android|BlackBerry|Opera Mini|IEMobile/gi)
+      if (isMobile) {
+        // 移动端
+        console.log(isMobile)
+        document.querySelector('.left-alert').style.display = 'none'
+      } else {
+        // PC端
+        // 隐藏18+
+        setTimeout(() => {
+          document.querySelector('#left-alert').style.display = 'none'
+          document.querySelector('.left-alert').style.display = 'block'
+        }, 60000);
+      }
+
     }
 
   </script>
@@ -872,8 +890,6 @@
     }
 
   </script>
-  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-  <script>LA.init({ id: "JUw1G6nZmii1ioa1", ck: "JUw1G6nZmii1ioa1" })</script>
 
 </body>
 
