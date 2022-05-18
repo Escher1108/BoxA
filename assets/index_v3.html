@@ -7,7 +7,7 @@
   <meta name="description" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/gh/fz6m/console-ban@3.2/dist/console-ban.min.js"></script>
 
   <base target="_blank">
@@ -491,6 +491,36 @@
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
+    .changenode {
+      position: fixed;
+      left: -120px;
+      bottom: 0;
+      z-index: 999;
+    }
+
+    .changenode::after{
+      content: '👁‍🗨';
+      left: 0;
+      bottom: 0;
+    }
+
+    .changenode:hover {
+      left: 0;
+      bottom: 0;
+      z-index: 999;
+    }
+
+    .changenode span {
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .changenode select {
+      width: 60px;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
     /* 手机模式 */
     @media screen and (max-width:760px) {
       body {
@@ -549,9 +579,28 @@
       .left-alert {
         display: none;
       }
+
+      .changenode {
+        position: fixed;
+        left: -130px;
+        bottom: 0;
+      }
+
+      .changenode::after {
+        content: '👁‍🗨';
+        /* position: fixed; */
+        left: 0;
+        bottom: 0;
+      }
+
+      .changenode:hover {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+      }
     }
 
-    @media screen and (max-width:350px) {
+    @media screen and (max-width:360px) {
       .footer-copyright {
         display: none;
       }
@@ -580,6 +629,25 @@
 
       .left-alert {
         display: none;
+      }
+
+      .changenode {
+        position: fixed;
+        left: -130px;
+        bottom: 0;
+      }
+
+      .changenode::after {
+        content: '👁‍🗨';
+        /* position: fixed; */
+        left: 0;
+        bottom: 0;
+      }
+
+      .changenode:hover {
+        position: fixed;
+        left: 0;
+        bottom: 0;
       }
     }
   </style>
@@ -614,7 +682,7 @@
   <!-- 更新提示 -->
   <div class="alert">
     <ul>
-      <li>此次更新版本为V 1.1.4，更换新的UI</li>
+      <li>此次更新版本为V 1.1.5，添加切换线路功能</li>
       <li>网站为沙箱，不保存任何信息</li>
       <li>如果客官有任何问题，请及时与我联系：eschervip#gmail.com</li>
       <li>如果客官手里有闲钱，点击捐赠进行支持，服务器流量快没了啊!!!</li>
@@ -646,6 +714,12 @@
     <div>👆</div>
   </div>
 
+  <!-- 线路切换 -->
+  <div class="changenode">
+    <span>切换线路:</span>
+    <select id="selNode"></select>
+  </div>
+
   <!-- 非法操作警告 -->
   <div class="warning">
     <div class="warning-box">
@@ -674,6 +748,9 @@
     <!-- <div class="website">
       <a href="https:///pay.jkgblog.com" id="donate" target="_blank">💰赞助💰</a>
     </div> -->
+    <div class="website">
+      <a  id="donate" >💰赞助💰</a>
+    </div>
     <div class="website">
       <a href="https://t.me/Jsproxy" target="_blank">📺TG@Jsproxy</a>
     </div>
@@ -710,7 +787,7 @@
         document.querySelector('.donate-box').classList.add('showerd')
       }
     }
-    // BTN()
+    BTN()
 
     const CLSD = () => {
       document.querySelector('#closedD').onclick = function () {
@@ -851,6 +928,13 @@
 
     function onSwFail(err) {
       txtURL.value = err
+    }
+
+    selNode.onchange = function () {
+      const item = this.options[this.selectedIndex]
+      const node = item.value
+      conf.node_default = node
+      sendMsgToSw(PAGE_CONF_SET, conf)
     }
 
     function sendMsgToSw(cmd, val) {
