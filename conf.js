@@ -16,7 +16,7 @@ jsproxy_config({
       label: '美国',
       lines: {
         // 主机:权重
-        'us1.jsproxy.xyz': 1,
+        'jspro.nbsp.workers.dev': 1,
         'us2.jsproxy.xyz': 2,
         // 'node-aliyun-hk-2.etherdream.com:8443': 2,
       }
@@ -24,7 +24,7 @@ jsproxy_config({
     'Anycast': {
       label: '谷歌Anycast',
       lines: {
-        'fast.jsproxy.xyz': 1,
+        'jsp.fuckjs.workers.dev': 1,
       },
     },
     'mysite': {
