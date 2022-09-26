@@ -139,17 +139,7 @@ const app = new Vue({
         }
 
         /*********************/
-        const PAGE_CONF_SET = 110
-        const PAGE_CONF_GET = 111
-        const SW_CONF_RETURN = 112
-        const SW_CONF_CHANGE = 113
-        const PAGE_READY_CHECK = 200
-        const SW_READY = 201
-        const sw = navigator.serviceWorker
-        sw.addEventListener('message', this.onSwMsg())
-        this.sendMsgToSw(PAGE_READY_CHECK)
-
-
+        // if (this.val == '') return this.wdArr = this.listArr;
 
     },
     methods: {
@@ -166,34 +156,6 @@ const app = new Vue({
                             registration.unregister();
                         }
                     });
-            }
-        },
-        sendMsgToSw(cmd, val) {
-            const ctl = sw.controller
-            if (!ctl) {
-                console.log('ctl is null')
-                return
-            }
-            ctl.postMessage([cmd, val])
-        },
-        onSwMsg(e) {
-            const [cmd, msg] = e.data
-            switch (cmd) {
-                case SW_CONF_RETURN:
-                    conf = msg
-                    // showConf()
-                    break;
-
-                case SW_CONF_CHANGE:
-                    conf = msg
-                    // updateSelected()
-                    break;
-
-                case SW_READY:
-                    console.log('sw ready')
-                    // showIcons()
-                    sendMsgToSw(PAGE_CONF_GET)
-                    break;
             }
         },
         handleHost() { },
