@@ -197,7 +197,8 @@ const app = new Vue({
                         text: 'You have successfully unlocked,enjoy it!',
                     }).then(res => {
                         if (res.isConfirmed || res.isDismissed) {
-                            window.location.reload();
+                            // window.location.reload();
+                            open(window.location.href)
                         }
                     })
 
