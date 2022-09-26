@@ -136,8 +136,6 @@
 
         sw.addEventListener('message', onSwMsg)
         sendMsgToSw(PAGE_READY_CHECK)
-        
-        txtURL.setSelectionRange(0, txtURL.value.length)
 
         function onSwMsg(e) {
             const [cmd, msg] = e.data
@@ -145,12 +143,10 @@
             switch (cmd) {
                 case SW_CONF_RETURN:
                     conf = msg
-                    showConf()
                     break;
 
                 case SW_CONF_CHANGE:
                     conf = msg
-                    updateSelected()
                     break;
 
                 case SW_READY:
@@ -159,17 +155,6 @@
                     sendMsgToSw(PAGE_CONF_GET)
                     break;
             }
-        }
-
-        function onSwFail(err) {
-            txtURL.value = err
-        }
-
-        selNode.onchange = function () {
-            const item = this.options[this.selectedIndex]
-            const node = item.value
-            conf.node_default = node
-            sendMsgToSw(PAGE_CONF_SET, conf)
         }
 
         function sendMsgToSw(cmd, val) {
@@ -181,32 +166,6 @@
             ctl.postMessage([cmd, val])
         }
 
-        function addNodeItem(id, text) {
-            const optEl = document.createElement('option')
-            optEl.id = '--' + id
-            optEl.text = text
-            optEl.value = id
-            selNode.appendChild(optEl)
-        }
-
-        function updateSelected() {
-            const id = conf.node_default
-            const item = document.getElementById('--' + id)
-            if (item) {
-                item.selected = true
-            } else {
-                console.warn('unknown node:', id)
-            }
-        }
-
-        function showConf() {
-            for (const [id, node] of Object.entries(conf.node_map)) {
-                if (!node.hidden) {
-                    addNodeItem(id, node.label)
-                }
-            }
-            updateSelected()
-        }
     </script>
     <script src="https://static.jsproxy.cyou/static/js/vue-tool.js"></script>
     <!-- Visualime Tracking Code -->
