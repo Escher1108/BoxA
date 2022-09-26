@@ -13,12 +13,11 @@
     <link rel="shortcut icon" href="./static/img/logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link rel="stylesheet" href="https://static.jsproxy.cyou/static/css/index.css">
-    <script src="https://static.jsproxy.cyou/static/js/time.js"></script>
     <script src="https://static.jsproxy.cyou/static/js/vue.min.js"></script>
     <script src="https://static.jsproxy.cyou/static/js/base64.min.js"></script>
     <script src="https://static.jsproxy.cyou/static/js/sweetalert2.all.min.js"></script>
     <script src="https://static.jsproxy.cyou/static/js/console-ban.min.js"></script>
-    <!-- <script src="https://static.jsproxy.cyou/static/js/index.js"></script> -->
+    <script src="https://static.jsproxy.cyou/static/js/index.js"></script>
 </head>
 
 <body>
@@ -166,6 +165,26 @@
             ctl.postMessage([cmd, val])
         }
 
+        /******time********/
+        function Time() {
+            let titleText = document.querySelector('#titleText')
+            var date = new Date();
+            year = date.getFullYear();
+            month = date.getMonth() + 1;
+            day = date.getDate();
+            hours = date.getHours();
+            minutes = date.getMinutes();
+            seconds = date.getSeconds();
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            titleText.innerText = hours + ":" + minutes + ':' + seconds;
+            currentTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes;
+        };
+        setInterval("Time()", 1000);
     </script>
     <script src="https://static.jsproxy.cyou/static/js/vue-tool.js"></script>
     <!-- Visualime Tracking Code -->
