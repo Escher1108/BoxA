@@ -1,196 +1,983 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Proxy</title>
-    <meta name="description"
-        content="hideip networkis a highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers. Unblock sites today!" />
-    <meta name="keywords"
-        content="proxy, web proxy, hideip, service workers, unblock websites, unblock chromebook, free web proxy, proxy list, proxy sites, un block chromebook, online proxy, proxy server, proxysite, proxy youtube, bypass securly, bypass iboss, bypass lightspeed filter, hideip, chromebooks, hideip network, unblock youtube, youtube proxy, unblocked youtube, youtube unblocked">
-    <link rel="shortcut icon" href="./static/img/logo.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-    <link rel="stylesheet" href="https://static.jsproxy.cyou/static/css/index.css">
-    <script src="https://static.jsproxy.cyou/static/js/vue.min.js"></script>
-    <script src="https://static.jsproxy.cyou/static/js/base64.min.js"></script>
-    <script src="https://static.jsproxy.cyou/static/js/sweetalert2.all.min.js"></script>
-    <script src="https://static.jsproxy.cyou/static/js/console-ban.min.js"></script>
-    <script src="https://static.jsproxy.cyou/static/js/index.js"></script>
+  <title>Public Proxy</title>
+  <meta charset="utf-8">
+  <meta name="description" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
+  <meta name="keywords" content="VPN,v2ray,trojan,wireguard,快速的公共节点,免费节点分享">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/fz6m/console-ban@3.2/dist/console-ban.min.js"></script>
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    function potentiallyBuggyCode() {
+      ConsoleBan.init({
+        redirect: 'https://jkgblog.com'
+      })
+    }
+    setInterval(function () {
+      potentiallyBuggyCode()
+    }, 1000)
+
+    function Time() {
+      let titleText = document.querySelector('#titleText')
+      var date = new Date();
+      year = date.getFullYear();
+      month = date.getMonth() + 1;
+      day = date.getDate();
+      hours = date.getHours();
+      minutes = date.getMinutes();
+      seconds = date.getSeconds();
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      titleText.innerText = hours + ":" + minutes;
+      currentTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes;
+    };
+    setInterval("Time()", 1000);
+
+    //总函数
+    const TOTAL = () => {
+      const WARN = document.querySelector('.warning')
+      const WARNBOX = document.querySelector('.warning-box')
+      const CONTAINER = document.querySelector('.container')
+      WARN.classList.add("shower")
+      CONTAINER.style.display = 'none';
+      document.querySelector('#closedw').onclick = function () {
+        document.querySelector('.warning').classList.remove("shower")
+        document.querySelector('.container').style.display = 'block'
+      }
+    }
+    //禁止右击
+    document.oncontextmenu = function () {
+      TOTAL()
+      return false;
+    }
+
+    //禁止键盘事件
+    document.onkeydown = function (e) {
+      if (e.shiftKey && e.ctrlKey && e.keyCode === 73) {
+        TOTAL()
+        return false
+      } else if (e.shiftKey && e.ctrlKey && e.keyCode === 74) {
+        TOTAL()
+        return false
+      }
+      if (e.keyCode === 123) {
+        TOTAL()
+        return false
+      }
+    }
+
+    // 网络监听
+    window.addEventListener('online', function () {
+      location.reload()
+    });
+    window.addEventListener('offline', function () {
+      alert('网络已断开，请检查！')
+    });
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: auto;
+      width: 100%;
+      overflow: hidden;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    @keyframes animate {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      50% {
+        filter: hue-rotate(180deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    /* @keyframes img {
+      0% {
+        background-image: url("https://w.wallhaven.cc/full/8o/wallhaven-8oev1j.jpg");
+
+      }
+
+      40% {
+        background-image: url("https://w.wallhaven.cc/full/8o/wallhaven-8odgry.jpg");
+
+      }
+
+      75% {
+        background-image: url('https://w.wallhaven.cc/full/pk/wallhaven-pkw6y3.jpg');
+
+      }
+
+      100% {
+        background-image: url("https://w.wallhaven.cc/full/1k/wallhaven-1kd9g1.jpg");
+
+      }
+    } */
+    @keyframes bg {
+      0% {
+
+        background: #96aa9c;
+        -webkit-box-shadow: 14px 14px 28px #7a8a7e, -14px -14px 28px #b3caba;
+        box-shadow: 14px 14px 28px #7a8a7e, -14px -14px 28px #b3caba;
+      }
+
+      20% {
+
+        background: #7838e6;
+        -webkit-box-shadow: 14px 14px 28px #612dba, -14px -14px 28px #8f43ff;
+        box-shadow: 14px 14px 28px #612dba, -14px -14px 28px #8f43ff;
+      }
+
+      40% {
+
+        background: #e638a5;
+        -webkit-box-shadow: 14px 14px 28px #ba2d86, -14px -14px 28px #ff43c4;
+        box-shadow: 14px 14px 28px #ba2d86, -14px -14px 28px #ff43c4;
+      }
+
+      60% {
+
+        background: #c14bc7;
+        -webkit-box-shadow: 14px 14px 28px #9c3da1, -14px -14px 28px #e659ed;
+        box-shadow: 14px 14px 28px #9c3da1, -14px -14px 28px #e659ed;
+      }
+
+      80% {
+
+        background: #44cfab;
+        -webkit-box-shadow: 14px 14px 28px #37a88b, -14px -14px 28px #51f6cb;
+        box-shadow: 14px 14px 28px #37a88b, -14px -14px 28px #51f6cb;
+      }
+
+      100% {
+
+        background: #c74b4c;
+        -webkit-box-shadow: 14px 14px 28px #a13d3e, -14px -14px 28px #ed595a;
+        box-shadow: 14px 14px 28px #a13d3e, -14px -14px 28px #ed595a;
+      }
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      animation: bg 40s ease-in-out infinite;
+    }
+
+
+    div.search {
+      padding: 30px 0;
+      /* border: 1px solid red; */
+    }
+
+    section {
+      position: relative;
+      width: 300px;
+      margin: 0 auto;
+      opacity: 1;
+    }
+
+    input,
+    button {
+      border: none;
+      outline: none;
+    }
+
+    button {
+      height: 42px;
+      width: 42px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    /*搜索框1*/
+    .bar1 {
+      animation: bg 40s ease-in-out infinite;
+      -webkit-border-radius: 23px;
+      border-radius: 23px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 250px;
+      /* border: 1px solid red; */
+    }
+
+    .bar1 input {
+      width: 100%;
+      height: 42px;
+      padding-left: 13px;
+      border: 2px solid #aca8c0;
+      animation: bg 40s ease-in-out infinite;
+      border-radius: 20px;
+      color: #ffffff;
+    }
+
+    .bar1 input::placeholder {
+      color: #5840bc;
+    }
+
+    .bar1 button {
+      top: 0;
+      right: 0;
+      animation: bg 40s ease-in-out infinite;
+      border-radius: 20px;
+    }
+
+    .bar1 button:before {
+      content: "🔎";
+      font-family: FontAwesome;
+      font-size: 16px;
+      color: #F9F0DA;
+    }
+
+    h2 {
+      background: linear-gradient(to right, red, blue);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 2.0rem;
+      cursor: pointer;
+      transition: 3s;
+    }
+
+    h2:hover {
+      transition: 2s;
+      transform: rotateY(180deg);
+    }
+
+    .box {
+      display: none;
+    }
+
+    .version {
+      position: absolute;
+      bottom: 15px;
+      float: left;
+      background-color: white;
+    }
+
+    .version span {
+      width: 5px;
+    }
+
+    .app {
+      width: 150px;
+      height: 150px;
+      display: none;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .text_ {
+      display: none;
+      margin-left: 20px;
+      font-family: "arial narrow";
+    }
+
+    .footer-copyright {
+      bottom: 0px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .website {
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      /* animation: bg 40s ease-in-out infinite; */
+      box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff !important;
+      box-shadow: 0 0 15px #eee;
+      border-radius: 20px;
+    }
+
+    .website a {
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* warning */
+    .warning {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      transition: 2s;
+      animation: bg 40s ease-in-out infinite;
+      top: 0;
+      left: -150%;
+    }
+
+    .warning-box::before {
+      border: 1px solid red;
+    }
+
+    .warning-box {
+      text-align: center;
+      width: 300px;
+      height: 200px;
+      animation: bg 40s ease-in-out infinite;
+      border-radius: 10px;
+    }
+
+    .warning-box input {
+      width: 80px;
+      height: 25px;
+      border-radius: 5px;
+      color: #fff0f7;
+      animation: bg 40s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    /* donate */
+    .donate-box {
+      top: 0;
+      right: -100%;
+      position: absolute;
+      /*绝对定位释放原来位置*/
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 2s;
+      background: linear-gradient(-35deg, rgb(122, 191, 194) 30%, rgb(121, 50, 50) 50%, #3b80ad 20%);
+      animation: animate 10s linear infinite;
+    }
+
+    .donate-box .donate-info {
+      position: absolute;
+      width: 350px;
+      height: 380px;
+      box-shadow: 8px 5px 20px #eee;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .donate-box span::before {
+      position: absolute;
+      top: 420px;
+      left: 165px;
+      content: '\f00d';
+      font-family: FontAwesome;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .donate-box .donate-info p {
+      top: 0;
+      left: 5px;
+      font-family: 'Times New Roman', Times, serif;
+      color: snow;
+      padding: 5px;
+    }
+
+    .donate-box .donate-info img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 5px;
+    }
+
+    .donate-box .donate-info h2 {
+      text-align: center;
+    }
+
+    .shower {
+      left: 0;
+      transition: 1.5s;
+    }
+
+    .showerd {
+      right: 0;
+      transition: 1.5s;
+    }
+
+    .showerd .donate-info {
+      transition: 1.5s;
+      transform: rotateZ(360deg);
+    }
+
+    .alert {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      animation: bg 40s ease-in-out infinite;
+      border-radius: 5px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .alert ul li {
+      padding: 5px;
+    }
+
+    .alert ul li:nth-child(6) {
+      color: #ff0000;
+    }
+
+    .alerts {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      /* animation: bg 40s ease-in-out infinite; */
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+
+    .alerts ol li {
+      padding: 5px;
+    }
+
+    .left-alert {
+      width: 20px;
+      height: 80px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      cursor: pointer;
+      /* animation: bg 40s ease-in-out infinite; */
+      border-radius: 5px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .changenode {
+      position: fixed;
+      left: -120px;
+      bottom: 0;
+      z-index: 999;
+      opacity:0.1
+    }
+
+    .changenode::after{
+      content: '👁‍🗨';
+      left: 0;
+      bottom: 0;
+    }
+
+    .changenode:hover {
+      left: 0;
+      bottom: 0;
+      z-index: 999;
+    }
+
+    .changenode span {
+      font-size: 12px;
+      color: #000000;
+    }
+
+    .changenode select {
+      width: 60px;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 手机模式 */
+    @media screen and (max-width:760px) {
+      body {
+        margin: 0;
+        padding: 0;
+        animation: bg 40s ease-in-out infinite;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        font-family: serif;
+      }
+
+      .right-cp {
+        display: none;
+      }
+
+      .footer-copyright {
+        display: none;
+      }
+
+      .donate {
+        display: none;
+      }
+
+      .deng-box,
+      .deng-box1 {
+        display: none;
+      }
+
+      .box {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        display: flex;
+        margin-top: 25px;
+        justify-content: space-around;
+        color: #eee;
+      }
+
+      .box .gg {
+        width: 50px;
+        height: 25px;
+        padding: 3px;
+        animation: bg 40s ease-in-out infinite;
+        border-radius: 10px;
+      }
+
+      .alert {
+        display: none;
+      }
+
+      .alerts {
+        display: none;
+      }
+
+      .left-alert {
+        display: none;
+      }
+
+      .changenode {
+        position: fixed;
+        left: -130px;
+        bottom: 0;
+	opacity:0.1
+      }
+
+      .changenode::after {
+        content: '👁‍🗨';
+        /* position: fixed; */
+        left: 0;
+        bottom: 0;
+      }
+
+      .changenode:hover {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    @media screen and (max-width:360px) {
+      .footer-copyright {
+        display: none;
+      }
+
+      .donate,
+      .donate-info {
+        display: none;
+      }
+
+      .deng-box,
+      .deng-box1 {
+        display: none;
+      }
+
+      marquee {
+        display: none;
+      }
+
+      .alert {
+        display: none;
+      }
+
+      .alerts {
+        display: none;
+      }
+
+      .left-alert {
+        display: none;
+      }
+
+      .changenode {
+        position: fixed;
+        left: -130px;
+        bottom: 0;
+	opacity:0.1
+      }
+
+      .changenode::after {
+        content: '👁‍🗨';
+        /* position: fixed; */
+        left: 0;
+        bottom: 0;
+      }
+
+      .changenode:hover {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container" id="root">
-        <div class="content">
-            <div class="box">
-                <div class="time" id="titleText"></div>
-                <div class="inp" :class="[errStatus ? 'err' : '']">
-                    <input type="text" value="" :placeholder="pld" @input="handleInput" @blur="checkBlur"
-                        @focus="checkFocus" v-model="val" @keyup.enter="handleCheck" @keyup.down="handleDown"
-                        @keyup.up="handleUp">
-                    <img src="https://static.jsproxy.cyou/static/img/search.svg" alt="" @click="handleCheck">
-                    <div class="list" v-show="listShow" v-cloak>
-                        <div v-for="(item,index) in wdArr" @click="handleChoose(item,index)"
-                            :class="[kindex == index ? 'val-choose':'']" :key="index">
-                            {{item.text}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bookmark" :class="{'bindex':isZindex}" v-show="optionObj.bookmark" v-cloak>
-                <div class="book" v-for="(items,indexs) in bookArr" :key="indexs">
-                    <div class="bimg">
-                        <img :src="items.icon" v-if="items.icon" alt="" @click="addBook(indexs,items)">
-                        <div class="noimg" v-else @click="addBook(indexs,items)">{{items.name.substring(0,1)}}</div>
-                        <div class="edit" @click="editShow(indexs)" v-if="indexs !== bookArr.length - 1">...</div>
-                        <div class="dlog" :class="current == indexs ? 'dlogShow' : 'dlogClose'" @mouseleave="leave">
-                            <div @click="mobifBook(items)">修改</div>
-                            <div @click="moveBook(items,indexs)">移除</div>
-                        </div>
-                    </div>
-                    <div class="btext" @click="addBook(indexs,items)">{{items.name}}</div>
-                </div>
-            </div>
+  <!-- 主要代码 -->
+  <div class="container">
+    <div class="search bar1">
+      <span>🕒</span>
+      <h2 id="titleText"></h2>
+      <section>
+        <input id="txtURL" type="text" placeholder="Search 🔴🟡🟢 搜索" autofocus="">
+        <button id="btnGo" type="submit"></button>
+      </section>
+
+      <!-- 切换搜索引擎 -->
+      <div class="box">
+        <div class="gg">
+          <b id="baidu" onclick="sosoIt(1)">百度</b>
         </div>
-        <div class="sponsor" id="sponsor">
-            <h2>Special Sponsor</h2>
-            <div class="sbox">
-                <div class="simg" v-for="(it,id) in spArr" :key="id">
-                    <a :href="it.url" target="_blank" rel="noopener noreferrer"><img :src="it.img" alt="" srcset=""></a>
-                </div>
-            </div>
+        <div class="gg">
+          <b id="ss_360" onclick="sosoIt(2)">必应</b>
         </div>
-        <div class="setting">
-            <div class="left-icon" @click="handleSet">
-                <img src="https://store.heytapimage.com/cdo-portal/feedback/202208/21/d87d4620e738bf42d4e2addc578eb698.png"
-                    alt="">
-            </div>
-            <div class="setlist" v-show="setShow" v-cloak>
-                <div class="s-box">
-                    <div>👁‍🗨Show BookMark?</div>
-                    <span>Yes<input type="checkbox" v-model="optionObj.bookmark" @input="setBook"></span>
-                </div>
-                <hr>
-                <!-- password -->
-                <div class="code-box">
-                    <div class="title">💨 get password 💥</div>
-                    <div class="codes-box">
-                        <canvas ref="checkCode" @click="getCode"></canvas>
-                        <input v-model="inputCode" />
-                        <button @click="checkMe" :disabled="disabled">OK</button>
-                    </div>
-                    <div class="verify">{{verify}}</div>
-                </div>
-            </div>
+        <div class="gg">
+          <b id="sg" onclick="sosoIt(3)">搜狗</b>
         </div>
-        <div class="footer">
-            <a href="https://app.vmiss.com/aff.php?aff=10" target="_blank" rel="noopener noreferrer">
-                <img src="https://store.heytapimage.com/cdo-portal/feedback/202207/24/b1d32d88a31ecfdd9f11c52ba570adaf.png"
-                    alt="cheap vps" srcset="">
-            </a>
-            <a href="https://discord.gg/sg83wA4TGK" target="_blank" rel="noopener noreferrer">
-                <img src="https://store.heytapimage.com/cdo-portal/feedback/202207/24/56a47ee385a591166ffaece85b385014.png"
-                    alt="hideip network discord">
-            </a>
-            <a href="https://t.me/hideipnetwork" target="_blank" rel="noopener noreferrer">
-                <img src="https://store.heytapimage.com/cdo-portal/feedback/202207/24/24f67b6264d379960e4144d3b8dbe066.png"
-                    alt="hideip network telegram">
-            </a>
-        </div>
-        <!-- diglog -->
-        <div class="modal" v-show="digLog" v-cloak>
-            <div class="mbox">
-                <h3>添加快捷方式</h3>
-                <div>
-                    <h5><span style="color: #b83941;">*</span> 名称</h5>
-                    <input type="text" placeholder="请输入名称" v-model="bookObj.title" @focus="dwar1 = false">
-                    <span class="dwar" v-show="dwar1">信息错误</span>
-                </div>
-                <div>
-                    <h5><span style="color: #b83941;">*</span> 网址</h5>
-                    <input type="text" placeholder="https://www.google.com" v-model="bookObj.siteLink"
-                        @focus="dwar2 = false">
-                    <span class="dwar" v-show="dwar2">信息错误</span>
-                </div>
-                <div class="bc">
-                    <div @click="cancelBook">取消</div>
-                    <div @click="handleAdd">完成</div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <script>
-        const PAGE_CONF_SET = 110
-        const PAGE_CONF_GET = 111
+  </div>
 
-        const SW_CONF_RETURN = 112
-        const SW_CONF_CHANGE = 113
+  <!-- 更新提示 -->
+  <div class="alert">
+    <ul>
+      <li>此次更新版本为V 1.1.5，添加切换线路功能</li>
+      <li>网站为沙箱，不保存任何信息</li>
+      <li>如果客官有任何问题，请及时与我联系：eschervip#gmail.com</li>
+      <li>如果客官手里有闲钱，点击捐赠进行支持，服务器流量快没了啊!!!</li>
+      <li>国内无法访问的网站，直接粘贴到输入框！！！</li>
+    </ul>
+    <img src="https://raw.minibox.tk/Escher1108/BoxA/gh-pages/assets/ico/apk.png" alt="" srcset="">
+    <p>(扫描下载客户端)</p>
+    <p id="djs">60</p>
+  </div>
+  <div class="alerts" id="left-alert">
+    <ol>
+      <h3>🐳使用快捷键🐳</h3>
+      <li>www.youtube.com => youtube,yt,y</li>
+      <li>www.wikipedia.org => wikipedia,wiki,wk</li>
+      <li>duckduckgo.com => duckduckgo,duck,dg</li>
+      <!-- <li>🔞🔇jp.pornhub.com => jpporn,jpp,jp</li>
+      <li>🔞🔇cn.pornhub.com => cnporn,cnp,cn</li>
+      <li>🔞🔇www.redtube.com => redtube,red,r</li> -->
+      </li>
+      <i>(如本站能够完美兼容您想要访问的，不妨联系我添加快捷方式)</i>
+      <p id="hideleft">👉隐藏👈</p>
+    </ol>
 
-        const PAGE_READY_CHECK = 200
-        const SW_READY = 201
+  </div>
+  <div class="left-alert">
+    <div>👇</div>
+    <div>展</div>
+    <div>开</div>
+    <div>👆</div>
+  </div>
 
-        const sw = navigator.serviceWorker
+  <!-- 线路切换 -->
+  <div class="changenode">
+    <span>切换线路:</span>
+    <select id="selNode"></select>
+  </div>
 
+  <!-- 非法操作警告 -->
+  <div class="warning">
+    <div class="warning-box">
+      <h2>警告</h2>
+      <p>STOP，请停止你的小动作！</p>
+      <p>小人专用页面，您老看到这个界面说明你手欠！</p>
+      <input type="button" value="关闭" id="closedw">
+    </div>
+  </div>
+  <!-- 捐赠信息 -->
+  <div class="donate-box">
+    <div class="donate-info">
+      <h2>你想成为FreeStar吗</h2>
+      <p>本站服务皆为了沙盒网站开发，目的是为了检测来源不明的可疑链接，如果你觉得本站对你有所帮助，
+        我希望能够得到你的赞助，缓解本站服务器每月 <b style="color:#ff0000;">$25</b> 的高额支出，赞助金额看你喜欢！救救孩子吧~</p>
+      <img src="https://s3.jpg.cm/2021/06/08/ILeah4.png" alt="jkgblog.com">
+      <span id="closedD" title="不赞助"></span>
+    </div>
+  </div>
 
-        sw.addEventListener('message', onSwMsg)
-        sendMsgToSw(PAGE_READY_CHECK)
+  <!-- copyright -->
+  <div class="footer-copyright">
+    <!-- <div class="website">
+      <a href="https://jkgblog.com" target="_blank" rel="noopener noreferrer">👨‍🦱Escher's Blog</a>
+    </div> -->
+    <!-- <div class="website">
+      <a href="https:///pay.jkgblog.com" id="donate" target="_blank">💰赞助💰</a>
+    </div> -->
+    <div class="website">
+      <a  id="donate" >💰赞助💰</a>
+    </div>
+    <div class="website">
+      <a href="https://t.me/Jsproxy" target="_blank">📺TG@Jsproxy</a>
+    </div>
+  </div>
 
-        function onSwMsg(e) {
-            const [cmd, msg] = e.data
+  <!-- 扫码下载代码 -->
+  <!-- <div class="version">
+		  <div class="app">
+		  	<img src="./ico/quora.png">
+		  </div>
+		  
+		  <span id="download"><i class="fa fa-chevron-right"></i><span class="text_">--下载最新版本--</span></span>
+	  </div> -->
 
-            switch (cmd) {
-                case SW_CONF_RETURN:
-                    conf = msg
-                    break;
-
-                case SW_CONF_CHANGE:
-                    conf = msg
-                    break;
-
-                case SW_READY:
-                    console.log('sw ready')
-                    // showIcons()
-                    sendMsgToSw(PAGE_CONF_GET)
-                    break;
-            }
-        }
-
-        function sendMsgToSw(cmd, val) {
-            const ctl = sw.controller
-            if (!ctl) {
-                console.log('ctl is null')
-                return
-            }
-            ctl.postMessage([cmd, val])
-        }
-
-        /******time********/
-        function Time() {
-            let titleText = document.querySelector('#titleText')
-            var date = new Date();
-            year = date.getFullYear();
-            month = date.getMonth() + 1;
-            day = date.getDate();
-            hours = date.getHours();
-            minutes = date.getMinutes();
-            seconds = date.getSeconds();
-            if (minutes < 10) {
-                minutes = "0" + minutes;
-            }
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-            }
-            titleText.innerText = hours + ":" + minutes + ':' + seconds;
-            currentTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes;
-        };
-        setInterval("Time()", 1000);
-    </script>
-    <script src="https://static.jsproxy.cyou/static/js/tool.min.js"></script>
-    <!-- Visualime Tracking Code -->
-    <!-- <script>
-        !function (e, i, n, s, t, c) { e[s] || (visualime_site_id = "bb314ed3", e[s] = {}, e[s].callsQueue = [], e[s].api = function () { e[s].callsQueue.push(arguments) }, t = i.createElement(n), c = i.getElementsByTagName(n)[0], t.async = 1, t.src = "https://visualime.com/v/visualime-a8b745.min.js", t.id = s + n, c.parentNode.insertBefore(t, c)) }(window, document, "script", "VISUALIME");
+  <!-- 扫码下载jQuery -->
+  <!-- <script type="text/javascript">
+	  	$(function(){
+		 $("#download").click(function(){
+			 $('.app,.text_').fadeIn(2000)
+			 $('i').hide(1500)
+		 })
+		 $('.app').click(function(){
+			 $('.app,.text_').fadeOut(1500)
+			 $('i').show(1500)
+		 })
+		})
     </script> -->
+  <script>
+    const BTN = () => {
+      document.querySelector("#donate").onclick = function () {
+        // 存入数据检测
+        localStorage.setItem("id", "Jesmora");
+        document.querySelector('.container').style.display = 'none'
+        document.querySelector('.donate-box').classList.add('showerd')
+      }
+    }
+    BTN()
+
+    const CLSD = () => {
+      document.querySelector('#closedD').onclick = function () {
+        document.querySelector('.warning').classList.remove('shower')
+        document.querySelector('.donate-box').classList.remove('showerd')
+        document.querySelector('.container').style.display = 'block'
+      }
+    }
+    CLSD()
+
+    function hide() {
+      // $('.left-alert').hide()
+      // $('#hideleft').click(function(){
+      //   $("#left-alert").hide()
+      //   $('.left-alert').show()
+      // })
+      // $('.left-alert').click(function(){
+      //   $("#left-alert").show()
+      //   $('.left-alert').hide()
+      // })
+      document.querySelector('.left-alert').style.display = 'none'
+      document.querySelector('#hideleft').onclick = function () {
+        document.querySelector('#left-alert').style.display = 'none'
+        document.querySelector('.left-alert').style.display = 'block'
+      }
+      document.querySelector('.left-alert').onclick = function () {
+        document.querySelector('#left-alert').style.display = 'block'
+        document.querySelector('.left-alert').style.display = 'none'
+      }
+    }
+    hide()
+
+
+    // 切换搜索引擎
+    function sosoIt(obj) {
+      var wd = document.getElementById("txtURL").value;
+      if (obj == 1) {
+        window.open("https://www.baidu.com/s?wd=" + wd)
+      }
+      if (obj == 2) {
+        window.open("https://www.bing.com/search?q=" + wd)
+      }
+      if (obj == 3) {
+        window.open("https://www.sogou.com/web?query=" + wd)
+      }
+    }
+
+    window.onload = function () {
+      let djs = document.querySelector('#djs');
+      let alt = document.querySelector('.alert');
+      let time = 60;
+      let set = setInterval(function () {
+        time--;
+        djs.innerHTML = time;
+        if (time === 0) {
+          alt.style.display = 'none';
+          clearInterval(set);
+        }
+      }, 1000);
+
+
+
+      // 手机端隐藏
+      let isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/gi)
+      let isMobile = isIOS || navigator.userAgent.match(/Android|BlackBerry|Opera Mini|IEMobile/gi)
+      if (isMobile) {
+        // 移动端
+        console.log(isMobile)
+        document.querySelector('.left-alert').style.display = 'none'
+      } else {
+        // PC端
+        // 隐藏18+
+        setTimeout(() => {
+          document.querySelector('#left-alert').style.display = 'none'
+          document.querySelector('.left-alert').style.display = 'block'
+        }, 60000);
+      }
+
+    }
+
+  </script>
+
+  <script>
+    const PAGE_CONF_SET = 110
+    const PAGE_CONF_GET = 111
+
+    const SW_CONF_RETURN = 112
+    const SW_CONF_CHANGE = 113
+
+    const PAGE_READY_CHECK = 200
+    const SW_READY = 201
+
+    const sw = navigator.serviceWorker
+
+
+    sw.addEventListener('message', onSwMsg)
+    sendMsgToSw(PAGE_READY_CHECK)
+
+    btnGo.onclick = function () {
+      // 获取输入框的值进行提示
+      const text = txtURL.value.trim()
+      if (text == "www.pornhub.com" || text == "www.xvideos.com") {
+        alert("违法站点，将重定向到安全站点！")
+      }
+      if (text) {
+        const url = './-----' + text;
+        open(url, '_blank', 'noopener,noreferrer')
+      }
+    }
+    txtURL.onkeypress = function (e) {
+      if (e.keyCode === 13) {
+        btnGo.onclick()
+      }
+    }
+    txtURL.setSelectionRange(0, txtURL.value.length)
+
+    function onSwMsg(e) {
+      const [cmd, msg] = e.data
+
+      switch (cmd) {
+        case SW_CONF_RETURN:
+          conf = msg
+          showConf()
+          break;
+
+        case SW_CONF_CHANGE:
+          conf = msg
+          updateSelected()
+          break;
+
+        case SW_READY:
+          console.log('sw ready')
+          // showIcons()
+          sendMsgToSw(PAGE_CONF_GET)
+          break;
+      }
+    }
+
+    function onSwFail(err) {
+      txtURL.value = err
+    }
+
+    selNode.onchange = function () {
+      const item = this.options[this.selectedIndex]
+      const node = item.value
+      conf.node_default = node
+      sendMsgToSw(PAGE_CONF_SET, conf)
+    }
+
+    function sendMsgToSw(cmd, val) {
+      const ctl = sw.controller
+      if (!ctl) {
+        console.log('ctl is null')
+        return
+      }
+      ctl.postMessage([cmd, val])
+    }
+
+    function addNodeItem(id, text) {
+      const optEl = document.createElement('option')
+      optEl.id = '--' + id
+      optEl.text = text
+      optEl.value = id
+      selNode.appendChild(optEl)
+    }
+
+    function updateSelected() {
+      const id = conf.node_default
+      const item = document.getElementById('--' + id)
+      if (item) {
+        item.selected = true
+      } else {
+        console.warn('unknown node:', id)
+      }
+    }
+
+    function showConf() {
+      for (const [id, node] of Object.entries(conf.node_map)) {
+        if (!node.hidden) {
+          addNodeItem(id, node.label)
+        }
+      }
+      updateSelected()
+    }
+
+  </script>
+
 </body>
 
 </html>
