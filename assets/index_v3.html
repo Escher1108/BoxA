@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Page Sandbox</title>
+  <title>Public Proxy Web</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
@@ -150,61 +150,20 @@
       const sw = navigator.serviceWorker
 
       const btn = document.querySelector('#btn')
-      const api = Base64.decode('aHR0cHM6Ly9qZXNtb3JhLm5wa24ubmV0L2hpZGVpcC9wYXNzd2Q=');
-      const key = getCookie('key')
 
       sw.addEventListener('message', onSwMsg)
       sendMsgToSw(PAGE_READY_CHECK)
-
-      window.addEventListener('load', (e) => {
-        if (!key) {
-          btn.placeholder = 'Please enter password';
-        } else {
-          btn.placeholder = 'Enter words or URl';
-        }
-      })
 
       btn.placeholder = 'Enter words or URL';
       btn.onkeypress = function (e) {
         const text = btn.value.trim()
         if (e.keyCode === 13 && text) {
-          if (!key) {
-            btn.placeholder = 'Please enter password';
-            passRequest(api, btn.value)
-          } else {
-            btn.placeholder = 'Enter words or URl';
-            const url = './-----' + text
-            open(url, '_blank', 'noopener,noreferrer')
-          }
+          const url = './-----' + text
+          open(url, '_blank', 'noopener,noreferrer')
         }
       }
 
       btn.setSelectionRange(0, btn.value.length)
-
-      function passRequest(api, val) {
-        fetch(api, {
-          method: 'POST',
-          cache: 'no-cache',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ passwd: val })
-        }).then(res => res.json()).then(data => {
-          if (data.status == 200) {
-            const pw = Base64.decode(data.data.password);
-            setCookie("key", pw, data.data.time);
-            btn.placeholder = 'Enter words or URl';
-            window.location.reload()
-          }
-          if (data.status == 5101) {
-            btn.value = ''
-            btn.placeholder = 'Password error'
-            setTimeout(() => {
-              btn.placeholder = 'Please enter password';
-            }, 2000)
-          }
-        })
-      }
 
       function getCookie(cname) {
         const name = cname + "=";
