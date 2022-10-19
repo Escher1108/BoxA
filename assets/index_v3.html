@@ -5,6 +5,7 @@
   <title>Page Sandbox</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
   <base target="_blank">
   <style>
     * {
@@ -136,92 +137,157 @@
     </section>
   </div>
   <script>
-    const PAGE_CONF_SET = 110
-    const PAGE_CONF_GET = 111
+    ; (function () {
+      const PAGE_CONF_SET = 110
+      const PAGE_CONF_GET = 111
 
-    const SW_CONF_RETURN = 112
-    const SW_CONF_CHANGE = 113
+      const SW_CONF_RETURN = 112
+      const SW_CONF_CHANGE = 113
 
-    const PAGE_READY_CHECK = 200
-    const SW_READY = 201
+      const PAGE_READY_CHECK = 200
+      const SW_READY = 201
 
-    const sw = navigator.serviceWorker
+      const sw = navigator.serviceWorker
 
-    const btn = document.querySelector('#btn')
+      const btn = document.querySelector('#btn')
+      const api = Base64.decode('aHR0cHM6Ly9qZXNtb3JhLm5wa24ubmV0L2hpZGVpcC9wYXNzd2Q=');
+      const key = getCookie('key')
 
-    sw.addEventListener('message', onSwMsg)
-    sendMsgToSw(PAGE_READY_CHECK)
+      sw.addEventListener('message', onSwMsg)
+      sendMsgToSw(PAGE_READY_CHECK)
 
-    btn.onkeypress = function (e) {
-      const text = btn.value.trim()
-      if (e.keyCode === 13 && text) {
-        const url = './-----' + text
-        open(url, '_blank', 'noopener,noreferrer')
-      }
-    }
-    btn.setSelectionRange(0, btn.value.length)
+      window.addEventListener('load', (e) => {
+        if (!key) {
+          btn.placeholder = 'Please enter password';
+        } else {
+          btn.placeholder = 'Enter words or URl';
+        }
+      })
 
-
-    function onSwMsg(e) {
-      const [cmd, msg] = e.data
-
-      switch (cmd) {
-        case SW_CONF_RETURN:
-          conf = msg
-          showConf()
-          break
-
-        case SW_CONF_CHANGE:
-          conf = msg
-          updateSelected()
-          break
-
-        case SW_READY:
-          console.log('sw ready')
-          sendMsgToSw(PAGE_CONF_GET)
-          break
-      }
-    }
-
-    function onSwFail(err) {
-      btn.value = err
-    }
-
-    function sendMsgToSw(cmd, val) {
-      const ctl = sw.controller
-      if (!ctl) {
-        console.log('ctl is null')
-        return
-      }
-      ctl.postMessage([cmd, val])
-    }
-
-    function addNodeItem(id, text) {
-      const optEl = document.createElement('option')
-      optEl.id = '--' + id
-      optEl.text = text
-      optEl.value = id
-      selNode.appendChild(optEl)
-    }
-
-    function updateSelected() {
-      const id = conf.node_default
-      const item = document.getElementById('--' + id)
-      if (item) {
-        item.selected = true
-      } else {
-        console.warn('unknown node:', id)
-      }
-    }
-
-    function showConf() {
-      for (const [id, node] of Object.entries(conf.node_map)) {
-        if (!node.hidden) {
-          addNodeItem(id, node.label)
+      btn.placeholder = 'Enter words or URL';
+      btn.onkeypress = function (e) {
+        const text = btn.value.trim()
+        if (e.keyCode === 13 && text) {
+          if (!key) {
+            btn.placeholder = 'Please enter password';
+            passRequest(api, btn.value)
+          } else {
+            btn.placeholder = 'Enter words or URl';
+            const url = './-----' + text
+            open(url, '_blank', 'noopener,noreferrer')
+          }
         }
       }
-      updateSelected()
-    }
+
+      btn.setSelectionRange(0, btn.value.length)
+
+      function passRequest(api, val) {
+        fetch(api, {
+          method: 'POST',
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ passwd: val })
+        }).then(res => res.json()).then(data => {
+          if (data.status == 200) {
+            const pw = Base64.decode(data.data.password);
+            setCookie("key", pw, data.data.time);
+            btn.placeholder = 'Enter words or URl';
+            window.location.reload()
+          }
+          if (data.status == 5101) {
+            btn.value = ''
+            btn.placeholder = 'Password error'
+            setTimeout(() => {
+              btn.placeholder = 'Please enter password';
+            }, 2000)
+          }
+        })
+      }
+
+      function getCookie(cname) {
+        const name = cname + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          const c = ca[i].trim();
+          if (c.indexOf(name) == 0) { return c.substring(name.length, c.length); }
+        }
+        return "";
+      }
+      function setCookie(name, value, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toGMTString();
+        document.cookie = name + "=" + value + "; " + expires;
+      }
+
+      /**
+       * 原始
+       * */
+
+
+      function onSwMsg(e) {
+        const [cmd, msg] = e.data
+
+        switch (cmd) {
+          case SW_CONF_RETURN:
+            conf = msg
+            showConf()
+            break
+
+          case SW_CONF_CHANGE:
+            conf = msg
+            updateSelected()
+            break
+
+          case SW_READY:
+            console.log('sw ready')
+            sendMsgToSw(PAGE_CONF_GET)
+            break
+        }
+      }
+
+      function onSwFail(err) {
+        btn.value = err
+      }
+
+      function sendMsgToSw(cmd, val) {
+        const ctl = sw.controller
+        if (!ctl) {
+          console.log('ctl is null')
+          return
+        }
+        ctl.postMessage([cmd, val])
+      }
+
+      function addNodeItem(id, text) {
+        const optEl = document.createElement('option')
+        optEl.id = '--' + id
+        optEl.text = text
+        optEl.value = id
+        selNode.appendChild(optEl)
+      }
+
+      function updateSelected() {
+        const id = conf.node_default
+        const item = document.getElementById('--' + id)
+        if (item) {
+          item.selected = true
+        } else {
+          console.warn('unknown node:', id)
+        }
+      }
+
+      function showConf() {
+        for (const [id, node] of Object.entries(conf.node_map)) {
+          if (!node.hidden) {
+            addNodeItem(id, node.label)
+          }
+        }
+        updateSelected()
+      }
+    })()
   </script>
 </body>
 
