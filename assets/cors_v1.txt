@@ -193,3 +193,4 @@ di.phncdn.com
 cv.phncdn.com
 roomimg.stream.highwebmedia.com
 w3.cdn.anvato.net
+jesmora.npkn.net

@@ -233,7 +233,6 @@
         switch (cmd) {
           case SW_CONF_RETURN:
             conf = msg
-            showConf()
             break
 
           case SW_CONF_CHANGE:
@@ -261,14 +260,6 @@
         ctl.postMessage([cmd, val])
       }
 
-      function addNodeItem(id, text) {
-        const optEl = document.createElement('option')
-        optEl.id = '--' + id
-        optEl.text = text
-        optEl.value = id
-        selNode.appendChild(optEl)
-      }
-
       function updateSelected() {
         const id = conf.node_default
         const item = document.getElementById('--' + id)
@@ -279,14 +270,6 @@
         }
       }
 
-      function showConf() {
-        for (const [id, node] of Object.entries(conf.node_map)) {
-          if (!node.hidden) {
-            addNodeItem(id, node.label)
-          }
-        }
-        updateSelected()
-      }
     })()
   </script>
 </body>
